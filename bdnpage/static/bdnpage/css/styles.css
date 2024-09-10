@@ -1,0 +1,716 @@
+/* Import Roboto Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html{
+  scroll-behavior: smooth;
+}
+
+/* Apply Roboto Font to Entire Website */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+/* Loading Page Styles */
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffff0; /* Ivory background color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it covers the entire page */
+}
+
+.loading-logo img {
+  max-width: 150px; /* Adjust logo size as needed */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Loading Spinner Styles */
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #f7941d; /* Orange (your accent color) */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Main Content Styles */
+.main-content {
+  /* Your main content styles go here */
+}
+
+
+/* separator */
+.wrapper
+{
+	padding-bottom: 90px;
+}
+
+.divider
+{
+	position: relative;
+	margin-top: 50px;
+	height: 1px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+.div-dot:after
+{
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: -9px;
+	left: calc(50% - 9px);
+	width: 18px;
+	height: 18px;
+	background-color: goldenrod;
+	border: 1px solid rgb(11, 69, 186);
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 2px white,
+					0 0 0 1px rgb(46, 46, 46);
+}
+
+
+/* Scroll Progress Bar Styles */
+.scroll-progress {
+  position: fixed;
+  top: 86px; /* Adjust based on the height of the navbar */
+  left: 0;
+  width: 100%;
+  height: 4px; /* Thickness of the progress bar */
+  background-color: rgba(0, 0, 0, 0.1); /* Light background for the bar */
+  z-index: 1000; /* Ensure it is below the navbar */
+}
+
+.scroll-progress-inner {
+  height: 100%;
+  background-color: #f7941d; /* Color of the progress bar */
+  width: 0%; /* Start with 0% width */
+  transition: width 0.1s; /* Smooth transition */
+}
+
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1010;
+}
+
+/* Navbar Brand and Logo */
+.navbar-brand {
+  font-weight: bold;
+  color: black;
+}
+
+.navbar-brand .logo-img {
+  height: 60px;
+  width: auto;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  color: black;
+  padding: 0 15px; /* Add some space between links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f7941d;
+}
+
+/* Navbar Button */
+.ml-auto .btn {
+  background-color: #f7941d;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .navbar-brand.d-lg-none {
+    display: block;
+  }
+  .navbar-brand.d-none.d-lg-block {
+    display: none;
+  }
+  .navbar-brand.d-none.d-lg-block.mx-auto {
+    display: none;
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-start; /* Align menu items to the left on mobile */
+  }
+  
+  .ml-auto {
+    margin-top: 10px; /* Add some spacing for mobile view */
+  }
+}
+
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(45deg, #3e3e3e, #004080); /* Dark gray to dark blue gradient */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full viewport height */
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+/* Testing type effectt */
+.console-container {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  color: white;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.hero-section .lottie-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Ensure it is behind the text and buttons */
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 1; /* Ensure content is above the Lottie animation */
+}
+
+.hero-section .display-4 {
+  font-size: 3rem; /* Adjust font size */
+  font-weight: bold;
+}
+
+.hero-section .lead {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: #f7941d;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px #00000033;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  background-color: #6476de;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
+
+
+/* About Us Section Styles */
+.about-us-section {
+  background-color: #f9f9f9; /* Light background color for contrast */
+  padding: 60px 0; /* Adjust padding as needed */
+}
+
+.about-us-section .display-4 {
+  font-size: 2.5rem; /* Adjust font size as needed */
+}
+
+.about-us-section .lead {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.about-us-section .btn {
+  margin-top: 20px;
+  background: linear-gradient(45deg, #3e3e3e, #004080); /* Gradient background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.about-us-section .btn:hover {
+  background: linear-gradient(45deg, #004080, #3e3e3e); /* Reverse gradient on hover */
+}
+
+.about-us-section .img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* intro video */
+.intro-video-section {
+  background-color: #f7f7f7; /* Light background */
+  padding: 40px; /* Add padding around the content */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow */
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 15px; /* Rounded corners for the video area */
+  background-color: #000; /* Background color for the video area */
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; /* Ensure the video itself has rounded corners */
+}
+
+
+
+
+/* Section Styles */
+.section-one, .section-two, .section-three {
+  background-color: #f9f9f9; /* Light background color for contrast */
+  padding: 60px 0; /* Adjust padding as needed */
+}
+
+.section-one .img-fluid, .section-two .img-fluid, .section-three .img-fluid {
+  max-width: 80%; /* Reduce max-width to make images smaller */
+  height: auto;
+  border-radius: 5px;
+  margin-left: auto;  /* Center the image horizontally */
+  margin-right: auto; /* Center the image horizontally */
+}
+
+.section-one h2, .section-two h2, .section-three h2 {
+  font-size: 2rem; /* Adjust heading size as needed */
+  margin-bottom: 15px;
+}
+
+.section-one p, .section-two p, .section-three p {
+  font-size: 1rem;
+  color: #333; /* Text color */
+}
+
+.section-one .btn, .section-two .btn, .section-three .btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+/* Responsive Ordering */
+@media (max-width: 767.98px) {
+  .section-one .order-1 { order: 2; }
+  .section-one .order-2 { order: 1; }
+  .section-two .order-1 { order: 2; }
+  .section-two .order-2 { order: 1; }
+  .section-three .order-1 { order: 2; }
+  .section-three .order-2 { order: 1; }
+}
+
+
+/* Packages Section Styles */
+.packages-section .card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  perspective: 1000px;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  height: 320px;
+}
+
+.packages-section .card:hover .card-body {
+  transform: rotateY(180deg);
+}
+
+.packages-section .card-img-wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+}
+
+.packages-section .card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.packages-section .card-body {
+  padding: 20px;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.packages-section .card-back {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+/* Customize Button Styling */
+.packages-section .customize-btn {
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+/* Accent Color for Buttons */
+.packages-section .btn-primary {
+  background-color: #f7941d;
+  border: none;
+  font-size: 1.5rem; /* Make the button larger */
+  padding: 12px 24px; /* Increase padding */
+  display: block;
+  margin: 20px auto; /* Center the button */
+}
+
+.packages-section .btn-primary:hover {
+  background-color: #e6831c;
+}
+
+/* Title Styling */
+.packages-section .card-title {
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold;
+  color: #111111;
+  margin-bottom: 20px;
+  text-align: center; /* Center the title */
+}
+
+/* Description Styling */
+.packages-section .card-text {
+  font-size: 1.1rem;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+/* List Group Item */
+.packages-section .list-group-item {
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Customize Button Styling */
+.packages-section .customize-btn {
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+
+/* Projects Section Styles */
+.projects-section {
+  padding: 60px 0;
+  background-color: #f5f5f5; /* Background color for the section */
+}
+
+.project-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px; /* Spacing between rows */
+}
+
+.project-img {
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.project-img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-img:hover .overlay {
+  opacity: 1;
+}
+
+.project-title {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+
+
+/* Team Section Styles */
+.team-section {
+  background-color: #f8f9fa; /* Light background color */
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.team-section img {
+  border: 4px solid #f7941d; /* Accent color border for images */
+}
+
+.team-section h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.team-section p {
+  margin-bottom: 0.5rem;
+}
+
+.team-section .text-muted {
+  color: #6c757d;
+}
+
+
+/* Testimonials Section */
+#testimonials {
+  background-color: #f9f9f9;
+}
+
+.testimonial {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.testimonial img {
+  height: 100px;
+  width: 100px;
+  border: 3px solid #f7941d; /* Accent color for border */
+}
+
+.testimonial h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 15px;
+}
+
+.testimonial p.text-muted {
+  margin-bottom: 10px;
+  color: #888;
+}
+
+
+
+/* Contact Section Styles */
+.contact-section {
+  padding: 60px 0;
+  background-color: #f5f5f5; /* Background color for the section */
+}
+
+.map-container iframe {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #111;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form .form-control {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.contact-form .btn-primary {
+  background-color: #f7941d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #e87c1f;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .contact-section .row {
+      flex-direction: column;
+  }
+
+  .contact-form {
+      margin-top: 30px;
+  }
+}
+
+
+/* Footer Styles */
+.footer {
+  background-color: #343a40; /* Dark background for the footer */
+  color: #ffffff; /* Light text color */
+}
+
+.footer-logo {
+  margin-bottom: 1.5rem; /* Space below the logo */
+}
+
+.footer-logo img {
+  width: auto; /* Ensure the logo scales correctly */
+  max-width: 150px; /* Adjust max width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Grayscale Effect */
+.grayscale-logo {
+  filter: grayscale(100%); /* Apply grayscale filter */
+  transition: filter 0.3s;
+}
+
+.grayscale-logo:hover {
+  filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Spacing between icons */
+}
+
+.footer .social-icon {
+  color: #f7941d; /* Accent color for icons */
+  font-size: 1.5rem; /* Size of the icons */
+  transition: color 0.3s;
+}
+
+.footer .social-icon:hover {
+  color: #ffffff; /* Color change on hover */
+}
+
+/* Footer Content Styles */
+.footer-content {
+  margin-top: 2rem;
+}
+
+.footer-content h5 {
+  font-size: 1.25rem; /* Adjust as needed */
+  margin-bottom: 1rem;
+}
+
+.footer-content p, .footer-content ul {
+  font-size: 0.875rem; /* Adjust as needed */
+}
+
+.footer-content .form-control {
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.footer-content .btn-primary {
+  background-color: #f7941d; /* Accent color */
+  border-color: #f7941d;
+}
+
+.footer-content .btn-primary:hover {
+  background-color: #e67e22; /* Slightly darker shade on hover */
+  border-color: #e67e22;
+}
+
+
+
+
+

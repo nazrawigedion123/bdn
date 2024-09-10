@@ -1,0 +1,44 @@
+{% extends  "base.html" %}
+
+{% block content %}
+<div class="d-flex flex-wrap" style="padding-top: 100px;">
+    <a class="btn btn-primary" href="{% url 'personnel:personnel_new' %}" style=" float:right;">Create Personnel</a>
+
+</div>
+<!-- Testimonial Section -->
+
+<div class="container" style="padding-bottom:100px;">
+    <h2>Personnel</h2>
+    <div class="project-wrapper">
+        {% for personnel in personnel_list %}
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <i class="fas fa-user testimonial-icon"></i>
+                <div class="testimonial-text">
+
+                    <footer>{{personnel.name}}</footer>
+                    <blockquote>
+                        <p>{{personnel.position|safe|linebreaks}}</p>
+                    </blockquote>
+                    {% if user.is_authenticated and user.is_superuser %}
+
+                    <a class="btn btn-primary" href="{% url 'personnel:personnel_edit' pk=personnel.pk %}">
+                        <i class="bi bi-pen"></i> Edit
+                    </a>
+
+
+                    <a class="btn btn-primary" href="{% url 'personnel:personnel_remove' pk=personnel.pk %}"><i
+                            class="bi bi-file-earmark-x"></i>Delete</a>
+
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

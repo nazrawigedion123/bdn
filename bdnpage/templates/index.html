@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<!-- Loading Page -->
+<div id="loading-page" class="loading-page">
+    <div class="loading-logo">
+        <img src="{% static 'bdnpage/images/bdn-04.png' %}" alt="BDN Logo">
+    </div>
+    <div class="loading-spinner"></div>
+</div>
+
+
+
+
+<!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-inner"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-section d-flex justify-content-center align-items-center text-center text-light">
+        <div id="lottie-background" class="lottie-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/bodymovin.min.js"></script>
+
+        <div class="container">
+            <h1 class="display-4 font-weight-bold container">Welcome to BDN</h1>
+        </br></br>
+            <div class='console-container'>
+              <span class="lead" id='text'></span>
+              <div class='console-underscore' id='cursor'>|</div>
+          </div>
+        </br></br>
+
+            <div class="hero-buttons">
+                <a href="index.html#services" class="btn btn-primary btn-lg m-2">Learn More</a>
+                <a href="index.html#contact" class="btn btn-secondary btn-lg m-2">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+
+
+
+        <!-- About Us Section -->
+        <section id="about" class="about-us-section py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Text Content -->
+                    <div class="col-lg-6">
+                        <h2 data-aos="fade-up" class="display-4 font-weight-bold">About Us</h2>
+                        <p data-aos="fade-down" class="lead">We are a team of dedicated professionals committed to delivering top-notch solutions tailored to your needs.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                        <a data-aos="fade-down" href="#" class="btn btn-primary btn-lg">Learn More</a>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-lg-6 text-center">
+                    </br>
+                        <img data-aos="fade-down" src="{% static 'bdnpage/images/bdn-03.png' %}" alt="About Us Image" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Video Section -->
+    <section id="intro-video" class="intro-video-section py-5">
+      <div class="container">
+          <h2 data-aos="fade-up" class="text-center font-weight-bold mb-4">Intro Video</h2>
+          <div class="row justify-content-center">
+              <div class="col-md-8">
+                  <div class="video-wrapper">
+                      <video controls>
+                          <source data-aos="fade-down" src="path/to/your/video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+
+    <div class="wrapper">
+      <div class="divider div-transparent div-dot"></div>
+    </div>
+
+    <!-- First-Part Section -->
+
+    <section id="services" class="section-one py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img data-aos="fade-left" src="{% static 'bdnpage/images/fullstack.svg' %}" alt="Image Description" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Fullstack Development</h2>
+                    <p data-aos="fade-right" class="lead">We provide comprehensive web development services, covering both frontend and backend development to build robust and scalable digital solutions. Our team ensures that every aspect of your web application is crafted to perfection, from user interface design to server-side logic.</p>
+                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider div-transparent div-arrow-down"></div>
+    <!-- Second Section-->
+    <section class="section-two py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 order-md-2">
+                    <img data-aos="fade-left" src="{% static 'bdnpage/images/digital.svg' %}" alt="Image Description" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6 mb-4 order-md-1">
+                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Digital Marketing</h2>
+                    <p data-aos="fade-right" class="lead">Enhance your online presence and drive targeted traffic with our effective digital marketing strategies. We use a mix of SEO, social media marketing, and PPC advertising to help you reach your audience and achieve your business goals.</p>
+                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="divider div-transparent div-arrow-down"></div>
+    <!-- Third Section -->
+    <section class="section-three py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img data-aos="fade-left" src="{% static 'bdnpage/images/graphics.svg' %}" alt="Image Description" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Graphics Design</h2>
+                    <p data-aos="fade-right" class="lead">Our graphics design services create visually stunning designs that effectively represent your brand and captivate your audience. From logos and brochures to banners and social media graphics, we craft designs that make a lasting impression.</p>
+                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+
+    <!-- Packages Section -->
+<!--    <section id="packages" class="packages-section py-5">-->
+<!--        <div class="container">-->
+<!--            <h2 data-aos="fade-up" class="display-6 font-weight-bold">Packages</h2>-->
+<!--        </br>-->
+<!--            <div class="row">-->
+<!--                {% for package in packages %}-->
+<!--                &lt;!&ndash; Package 1 &ndash;&gt;-->
+<!--                <div class="col-md-4">-->
+<!--                    <div data-aos="fade-up" data-aos-duration="3100" class="card">-->
+<!--                        <img src="{% static 'bdnpage/images/bdn-03.png' %}" class="card-img-top" alt="Package 1 Image">-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title">{{package.name}}</h5>-->
+<!--                            <p class="card-text">{{package.description}}</p>-->
+<!--                            <ul class="list-group list-group-flush">-->
+<!--                                {% for f in package.features.all %}-->
+<!--                                <li class="list-group-item">{{f.name}}</li>-->
+
+<!--                                {% endfor %}-->
+<!--                            </ul>-->
+<!--                            <a data-aos="zoom-out-down" href="#" class="btn btn-primary mt-3">Order</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% empty %}-->
+<!--                <p> no package</p>-->
+<!--                {% endfor %}-->
+
+
+
+
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Customize Button &ndash;&gt;-->
+<!--            <div class="text-center mt-5">-->
+<!--                <a href="#" class="btn btn-secondary customize-btn">Customize</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+
+    <!-- Packages Section -->
+<section id="packages" class="packages-section py-5">
+  <div class="container">
+      <h2 data-aos="fade-up" class="display-6 font-weight-bold">Packages</h2>
+      <br />
+      <div class="row">
+          {% for package in packages %}
+          <!-- Package 1 -->
+          <div class="col-md-4">
+              <div data-aos="fade-up" data-aos-duration="3100" class="card">
+                  <div class="card-img-wrapper">
+                      <img src="{{package.image.url}}" class="card-img-top" alt="{{package.name}} Image">
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title">{{package.name}}</h5>
+                      <p class="card-text">{{package.description}}</p>
+                      <div class="card-back">
+                          <ul class="list-group list-group-flush">
+                              {% for f in package.features.all %}
+                              <li class="list-group-item">{{f.name}}</li>
+
+                              {% endfor %}
+                          </ul>
+
+                      </div>
+
+                  </div>
+                  <a data-aos="zoom-out-down" href="{% url 'package:order_new' pk=package.pk %}" class="btn btn-primary mt-3">Order</a>
+              </div>
+          </div>
+          {% endfor %}
+
+
+
+
+      </div>
+
+      <!-- Customize Button -->
+      <div class="text-center mt-4">
+          <a href="#" class="btn btn-secondary customize-btn">Customize</a>
+      </div>
+  </div>
+</section>
+
+    <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 data-aos="fade-up" class="display-6 font-weight-bold">Projects</h2>
+        </br>
+          <div class="row">
+              {% for project in projects %}
+
+
+            <!-- Project Item 1 -->
+            <div data-aos="zoom-in-up" class="col-md-2 col-sm-4 project-item">
+              <div class="project-img" style="background-image: url({{project.image}});">
+                <div class="overlay">
+                  <h3 class="project-title">{{project.title}}</h3>
+                </div>
+              </div>
+            </div>
+              {% empty %}
+              <p> no projects</p>
+
+              {% endfor %}
+
+
+
+
+
+          </div>
+        </div>
+      </section>
+
+      <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+      <!-- Here We Are Section -->
+    <section class="team-section py-5 bg-light">
+        <div class="container">
+          <h2 data-aos="fade-up" class="text-center mb-4">Here We Are</h2>
+          <div class="row">
+            <!-- Team Member 1 -->
+              {% for personnel in personnels %}
+            <div class="col-md-4 text-center mb-4">
+              <img data-aos="fade-up" src="{{personnel.image.url}}" alt="Person 1" class="img-fluid rounded-circle mb-2" style="width: 150px; height: 150px;">
+              <h4  data-aos="fade-down" class="mb-1">{{personnel.name}}</h4>
+              <p   data-aos="fade-down"class="text-muted mb-1">{{personnel.location|safe|linebreaks}}</p>
+              <p   data-aos="fade-down">{{personnel.position}}</p>
+            </div>
+              {% empty %}
+              <p>no personnel</p>
+              {% endfor %}
+
+          </div>
+        </div>
+      </section>
+
+      <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+      <div class="container">
+          <h2 data-aos="fade-up" class="text-center mb-5">Testimonials</h2>
+          <div class="row">
+              {% for testimonial in testimonials %}
+              <!-- Testimonial 1 -->
+              <div data-aos="flip-left"  class="col-lg-4 col-md-6 mb-4">
+                  <div class="testimonial text-center p-4">
+                      {% if testimonial.image %}
+                      <img src="{{testimonial.image.url}}" alt="Person 1" class="rounded-circle mb-3" width="100">
+                      {% endif %}
+                      <h5 class="mb-0">{{testimonial.name}}</h5>
+                      <p class="text-muted">{{testimonial.position}}</p>
+                      <p class="testimonial-text">{{testimonial.testimonial}}</p>
+                  </div>
+              </div>
+              {% empty %}
+              <p>no testimonials</p>
+              {% endfor %}
+
+
+          </div>
+      </div>
+    </section>
+
+
+    <div class="wrapper">
+      <div class="divider div-transparent div-dot"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div data-aos="zoom-in" class="container">
+          <div class="row">
+            <!-- Google Map Location -->
+            <div class="col-md-6 map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d623.3983410054137!2d38.87441557397529!3d9.06328852799114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2set!4v1722715273502!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!-- Contact Us Form -->
+            <div class="col-md-6 contact-form">
+              <h2>Contact Us</h2>
+              <form  method="POST"  novalidate="true">
+
+
+                <div class="form-group">
+                    {% csrf_token %}
+
+                        {{form.as_p}}
+
+
+
+                </div>
+                   {% if form %}
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                  {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrapper">
+        <div class="divider div-transparent div-dot"></div>
+    </div>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome for icons -->
+    <script src="{% static 'bdnpage/js/scripts.js' %}"></script> <!-- Custom JS -->
+<script>
+  AOS.init();
+</script>
+
+
+
+
+
+{% endblock %}

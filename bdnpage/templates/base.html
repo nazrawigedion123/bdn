@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDN Portfolio</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Bundle with Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'bdnpage/css/styles.css' %}">
+
+    <!--    others-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script> <!-- Lottie Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!--    icons-->
+    <link rel="shortcut icon" href="{% static 'bdnpage/images/bdn-03.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'bdnpage/images/bdn-03.ico' %}" type="image/x-icon">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <a class="navbar-brand d-lg-none" href="#">
+      <img src="{% static 'bdnpage/images/bdn-04.png' %}" alt="BDN Logo" class="logo-img"> <!-- Replace with your logo image -->
+  </a>
+  <a class="navbar-brand d-none d-lg-block" href="#">
+      <img src="{% static 'bdnpage/images/bdn-04.png' %}" alt="BDN Logo" class="logo-img"> <!-- Replace with your logo image -->
+  </a>
+  <a class="navbar-brand d-none d-lg-block" href="#">BDN</a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}#about">About Us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}#packages">Packages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}#projects">Projects</a>
+      </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}#contact">Contact</a>
+          </li>
+           {% if user.is_superuser %}
+          <!-- Admin Dropdown -->
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+
+                  <li><a class="dropdown-item" href="{% url 'project:project_list' %}">Projects</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'package:package_list' %}">Package</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'package:feature_list' %}">Feature</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'testimonial:testimonials_list' %}">Testimonial</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'personnel:personnel_list' %}">Personnel</a></li>
+                  <li><hr class="dropdown-divider"></li>
+
+                  <li><a class="dropdown-item" href="{% url 'package:order_list' %}">Orders  <span class="badge bg-secondary">{{notifications}}</span></a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item notification" href="{% url 'package:notifications_list' %}">Notifications   <span class="badge bg-secondary">{{notifications}}</span> </a></li>
+                  <li><hr class="dropdown-divider"></li>
+
+
+              </ul>
+          </li>
+          {% endif %}
+      </ul>
+  </div>
+
+  <div class="ml-auto">
+      <a href="#" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+{% block content %}
+
+
+{% endblock %}
+    <!-- Footer Section -->
+    <footer class="footer bg-dark text-light py-4">
+        <div class="container text-center">
+          <!-- Logo in Grayscale -->
+          <div class="footer-logo mb-4">
+            <img  data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1000" src="{% static 'bdnpage/images/bdn-04.png' %}" alt="Company Logo">
+          </div>
+          <!-- Follow Us Section -->
+          <div class="follow-us mb-4">
+            <h5 class="mb-3">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Footer Content -->
+          <div class="footer-content">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <h5>Contact Us</h5>
+                <p>Addis Ababa, Ethiopia</p>
+                <p>Email: info@BDN.com</p>
+                <p>Phone: +251917893321</p>
+                <p>Phone: +251943340641</p>
+                <p>Phone: +251986599030</p>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-light">Home</a></li>
+                  <li><a href="{% url 'home' %}#services" class="text-light">Services</a></li>
+                  <li><a href="{% url 'home' %}#about" class="text-light">About Us</a></li>
+                  <li><a href="{% url 'home' %}#contact" class="text-light">Contact</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4">
+                <h5>Subscribe</h5>
+                <form method="POST">
+                      {% csrf_token %}
+
+                        {{form2.as_p}}
+                        {% if form2 %}
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                        {% endif %}
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Footer Content -->
+          <div class="text-center mt-4">
+            <p>&copy; 2024 Powered by BDN. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+
+
+
+
+</div>
+</body>
+</html>
