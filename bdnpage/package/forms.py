@@ -1,5 +1,5 @@
 from django import forms
-from .models import Package, Feature, Order
+from .models import Package, Feature, Order, Custom
 
 
 class PackageForm(forms.ModelForm):
@@ -36,3 +36,35 @@ class OrderForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone no', 'type':'phone'}),
             'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'email','type':'email'})
         }
+
+
+
+# class CustomForm(forms.ModelForm):
+#     feature = forms.ModelMultipleChoiceField(
+#         queryset=Feature.objects.all(),
+#         widget=forms.CheckboxSelectMultiple,  # For checkboxes, or RadioSelect for radio buttons
+#         required=True
+#     )
+#
+#     class Meta:
+#         model = Custom
+#         fields = ['feature']
+#
+class CustomForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Group features by package
+        packages = Package.objects.prefetch_related('features').all()
+        for package in packages:
+            features = package.features.all()
+            self.fields[f'package_{package.id}'] = forms.ModelMultipleChoiceField(
+                queryset=features,
+                widget=forms.CheckboxSelectMultiple,  # Checkboxes for multiple selection
+                required=False,
+                label=package.name
+            )
+
+    class Meta:
+        model = Custom
+        fields = []

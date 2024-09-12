@@ -17,7 +17,15 @@
                     <blockquote>
                         <p>{{order.company}}</p>
                         <p>{{order.phone}}</p>
+                        {% if order.package %}
                         <p>{{order.package.name}}</p>
+                        {% endif %}
+                        {% if order.custom %}
+                        <h4> custom Features</h4>
+                        {% for feature in order.custom.feature.all %}
+                            <p>{{feature.name}}</p>
+                        {% endfor %}
+                        {% endif %}
                     </blockquote>
                     {% if user.is_authenticated and user.is_superuser %}
 

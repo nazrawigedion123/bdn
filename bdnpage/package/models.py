@@ -8,14 +8,17 @@ class Feature(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=1000)
     price = models.FloatField(default=0)
+
     def __str__(self):
         return str(self.name)
 
     def get_absolute_url(self):
         return reverse("package:feature_list")
+
+
 class Package(models.Model):
     name = models.CharField(max_length=200)
-    features = models.ManyToManyField(Feature,blank=True)
+    features = models.ManyToManyField(Feature, blank=True)
     image = models.ImageField(upload_to='images/')
     description = models.TextField(max_length=1000)
     added_date = models.DateTimeField(auto_now_add=True)
@@ -33,21 +36,29 @@ class Package(models.Model):
     class Meta:
         ordering = ['-added_date']
 
+class Custom(models.Model):
+    feature = models.ManyToManyField(Feature, )
 class Order(models.Model):
     name = models.CharField(max_length=200)
     company = models.CharField(max_length=200, blank=True)
-    phone=models.CharField(max_length=20)
-    email=models.CharField(max_length=200)
-    package = models.ForeignKey(Package , on_delete=models.CASCADE,)
+    phone = models.CharField(max_length=20)
+    email = models.CharField(max_length=200)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE,blank=True,null=True )
     added_date = models.DateTimeField(auto_now_add=True)
-
-
+    custom = models.ForeignKey(Custom,on_delete=models.CASCADE,null=True,blank=True)
 
     def get_absolute_url(self):
-        return reverse("package:order_list")
+        return reverse("package:order_submitted")
 
     class Meta:
         ordering = ['-added_date']
+
+
+
+
+
+
+
 
 
 class Notification(models.Model):
@@ -59,4 +70,3 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"Notification for {self.user.username}: {self.message}"
-

@@ -225,7 +225,7 @@
 
       <!-- Customize Button -->
       <div class="text-center mt-4">
-          <a href="#" class="btn btn-secondary customize-btn">Customize</a>
+          <a href="{% url 'package:create_custom' %}" class="btn btn-secondary customize-btn">Customize</a>
       </div>
   </div>
 </section>
@@ -245,7 +245,7 @@
 
             <!-- Project Item 1 -->
             <div data-aos="zoom-in-up" class="col-md-2 col-sm-4 project-item">
-              <div class="project-img" style="background-image: url({{project.image}});">
+              <div class="project-img" style="background-image: url({{project.image.url}});">
                 <div class="overlay">
                   <h3 class="project-title">{{project.title}}</h3>
                 </div>
@@ -261,6 +261,9 @@
 
 
           </div>
+            <div class="text-center mt-4">
+          <a href="{% url 'project:projects' %}" class="btn btn-primary">Learn More</a>
+      </div>
         </div>
       </section>
 

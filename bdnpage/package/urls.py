@@ -20,4 +20,7 @@ urlpatterns=[
     path('order/<int:pk>/delete', views.OrderDeleteView.as_view(),name='order_remove'),
     path('order/submitted/', views.OrderSubmittedView.as_view(), name='order_submitted'),
     path('notifications/', views.NotificationListView.as_view(), name='notifications_list'),
+
+    path('create_custom/', views.create_custom, name='create_custom'),
+    path('create_order/<int:custom_id>/', views.create_order, name='create_order'),
 ]

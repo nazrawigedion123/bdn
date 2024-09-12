@@ -6,8 +6,8 @@ from django.utils import timezone
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Package, Feature, Order, Notification
-from .forms import PackageForm, FeatureForm, OrderForm
+from .models import Package, Feature, Order, Notification, Custom
+from .forms import PackageForm, FeatureForm, OrderForm,CustomForm
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 
@@ -141,7 +141,7 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
         order = form.save()
 
         users_to_notify = User.objects.filter(is_superuser=True)
-        print(users_to_notify)
+
         message = f"New order from {self.request.user.username} for package {order.package.name}"
 
         for user in users_to_notify:
@@ -187,3 +187,59 @@ class NotificationListView(LoginRequiredMixin, ListView):
         # Mark all notifications as read
         notifications.update(is_read=True)
         return notifications
+# def create_custom(request):
+#     if request.method == "POST":
+#         form = CustomForm(request.POST)
+#         if form.is_valid():
+#             custom = form.save()
+#             # Redirect to the order creation view with the custom id
+#             return redirect(reverse('package:create_order', kwargs={'custom_id': custom.id}))
+#     else:
+#         form = CustomForm()
+#     return render(request, 'package/customize.html', {'form': form})
+
+
+def create_custom(request):
+    if request.method == "POST":
+        form = CustomForm(request.POST)
+        if form.is_valid():
+            custom = Custom.objects.create()
+
+            # Save selected features for each package
+            for field in form.cleaned_data:
+                if field.startswith('package_'):
+                    selected_features = form.cleaned_data[field]
+                    custom.feature.add(*selected_features)
+
+            custom.save()
+            return redirect(reverse('package:create_order', kwargs={'custom_id': custom.id}))
+    else:
+        form = CustomForm()
+
+    return render(request, 'package/customize.html', {'form': form})
+
+def create_order(request, custom_id=None):
+    custom = Custom.objects.get(id=custom_id) if custom_id else None
+
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.custom = custom  # Associate the order with the custom object
+            order.save()
+
+            users_to_notify = User.objects.filter(is_superuser=True)
+
+            message = f"New order from {request.user.username} for features {order.custom.feature.all()}"
+
+            for user in users_to_notify:
+                Notification.objects.create(
+                    user=user,  # Notify each user in the list
+                    order=order,
+                    message=message
+                )
+            return redirect('package:order_submitted')  # Redirect to a success page or another desired location
+    else:
+        form = OrderForm()
+
+    return render(request, 'package/order_form.html', {'form': form, 'custom': custom})

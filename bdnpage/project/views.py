@@ -12,6 +12,17 @@ from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 
 
+
+
+def projects(request):
+    pro= Project.objects.all()
+    context={
+        'projects': pro
+
+    }
+    return render(request, 'project/projects.html',context=context)
+
+
 # Create your views here.
 
 class ProjectListView(ListView):

@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    position: relative;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.header-content {
+    margin-top: 80px; /* Adjusted based on navbar height */
+    padding: 20px;
+
+}
+
+.header-content h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    color: #f7941d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-content p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.customize-section {
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Center and limit width */
+    animation: fadeIn 1s ease-out;
+}
+
+.customize-section h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 2px solid #f7941d;
+    padding-bottom: 10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group label {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.5;
+}
+
+.radio-group input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-group label {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.5;
+}
+
+.checkbox-group input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 5px;
+}
+
+.done-button {
+    display: inline-block;
+    width: 200px;
+    margin: 40px;
+    padding: 15px;
+    background-color: #f7941d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.done-button:hover {
+    background-color: #e6831f;
+    transform: scale(1.05);
+}
+
+.done {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.counter {
+    font-size: 1.2em;
+    margin-left: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+</style>
+
+    <header>
+        <div id="navbar"></div>
+        <div class="header-content">
+            <h1>Customize Your Package</h1>
+            <p>Select the options that best suit your needs.</p>
+        </div>
+    </header>
+
+    <main>
+
+                <form method="POST">
+                    {% csrf_token %}
+                      {% for field in form %}
+                            <section class="customize-section">
+                                <h2 class="package-name">{{ field.label }}</h2> <!-- Styled package name -->
+                                <div class="checkbox-group">
+                                    {{ field }}
+                                </div>
+                            </section>
+                    {% endfor %}
+                    <div>
+                    <div class="done">
+                          <div id="selected-counter" class="counter">Selected Features: 0</div>
+
+
+                         <button type="submit" class="done-button">Done</button>
+
+                    </div>
+                </div>
+
+                </form>
+
+
+    </main>
+
+    <div>
+
+        <script>
+// Function to count selected checkboxes
+function updateSelectedCounter() {
+    // Get all checked checkboxes
+    let selectedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+
+    // Get the radio button groups and count selected ones (for radio button categories)
+    let selectedRadios = new Set();  // To ensure we don't count the same radio button group twice
+    document.querySelectorAll('input[type="radio"]:checked').forEach(function (radio) {
+        selectedRadios.add(radio.name);  // Count each radio button group once
+    });
+
+    // Get the counter div and update it
+    document.getElementById('selected-counter').innerText =
+        `Selected Features: ${selectedCount + selectedRadios.size}`;
+}
+
+// Event listeners for checkboxes and radio buttons
+document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', updateSelectedCounter);  // Call function on selection change
+});
+
+// Call the function initially in case some checkboxes are pre-selected
+updateSelectedCounter();
+</script>
+
+
+
+
+
+    
+  
+
+
+  
+
+
+{% endblock %}
