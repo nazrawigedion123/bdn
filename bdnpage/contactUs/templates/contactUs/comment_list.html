@@ -1,0 +1,56 @@
+{% extends  "base.html" %}
+
+{% block content %}
+
+    <div class="container" style="padding-top: 65px;" >
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-title">Comments</h2>
+                <div class="row">
+                 {% for comment in comment_list %}
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 text-center">
+                            <blockquote class="blockquote">
+                              <p class="mb-4">
+                                {{ comment.comment|safe|linebreaks}}
+                              </p>
+                              <footer class="blockquote-footer">
+                                  <span>Name: {{comment.name}}</span> <br/>
+                                  <span>phone: {{comment.phone}}</span> <br/>
+                                  <span>email: {{comment.email}}</span> <br/>
+                              </footer>
+                            </blockquote>
+
+                              {% if user.is_authenticated %}
+                                    {% if user.is_superuser %}
+
+
+
+                                        <a class="btn btn-primary" href="{% url 'contactUs:comment_remove' pk=comment.pk %}"><i class="bi bi-file-earmark-x"></i>Delete</a>
+
+                                    {% endif %}
+
+
+                            {% endif %}
+                          </div>
+                        </div>
+
+
+
+
+
+
+    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

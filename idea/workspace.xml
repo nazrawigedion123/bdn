@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4006fca7-152b-4d51-94b9-de302b16c1d9" name="Changes" comment="finishing touches 1">
+      <change afterPath="$PROJECT_DIR$/bdnpage/package/migrations/0008_alter_order_package_custom_order_custom.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/package/migrations/0009_alter_order_package.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/static/bdnpage/images/BG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/static/vacancy/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/static/vacancy/images/vacancy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/templates/vacancy/vacancy_confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/templates/vacancy/vacancy_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/templates/vacancy/vacancy_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/templates/vacancy/vacancy_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bdnpage/vacancy/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/bdnpage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/bdnpage/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/bdnpage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/bdnpage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/bdnpage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/bdnpage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/package/templates/package/customize.html" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/package/templates/package/customize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/package/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/package/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/static/bdnpage/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/static/bdnpage/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdnpage/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bdnpage/templates/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nazrawigedion123&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nazrawigedion123/bdn&quot;,
+    &quot;accountId&quot;: &quot;e6274c3b-aaf6-467a-a93e-e6af831a422f&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2kYhyZHmmUkiXmkqneGw5dGg10d" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/bdn/bdnpage/vacancy/static/vacancy/images&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bdn\bdnpage\vacancy\static\vacancy\images" />
+      <recent name="D:\bdn\bdnpage\static\bdnpage\images" />
+      <recent name="D:\bdn\bdnpage\package\templates\package" />
+      <recent name="D:\bdn\bdnpage\project\static\project\js" />
+      <recent name="D:\bdn\bdnpage\project\templates\project" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\bdn\bdnpage\vacancy\static\vacancy" />
+      <recent name="D:\bdn\bdnpage\vacancy\static\vacancy\css" />
+      <recent name="D:\bdn\bdnpage\vacancy\templates\vacancy" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="bdn" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bdnpage/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4006fca7-152b-4d51-94b9-de302b16c1d9" name="Changes" comment="" />
+      <created>1723466673241</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1723466673241</updated>
+    </task>
+    <task id="LOCAL-00001" summary="finishing touches 1">
+      <option name="closed" value="true" />
+      <created>1726134007206</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726134007206</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="finishing touches 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="finishing touches 1" />
+  </component>
+</project>

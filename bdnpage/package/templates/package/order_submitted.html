@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="alert alert-success mt-5" role="alert" style="padding-top:100px;">
+      <h4 class="alert-heading">Order Submitted!</h4>
+      <p>Your order has been successfully submitted. We will process it and get back to you soon.</p>
+      <hr>
+      <p class="mb-0">Thank you for choosing our service!</p>
+    </div>
+    <a style="padding-bottom:100px;" href="{% url 'home' %}" class="btn btn-primary mt-3">Go Back to Home</a>
+
+
+
+{% endblock %}

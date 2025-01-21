@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Confirm Vacancy Deletion</h1>
+<p>Are you sure you want to delete the vacancy: "{{ vacancy.title }}"?</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+  <a href="{% url 'vacancy_list' %}">Cancel</a>
+</form>
+
+
+{% endblock %}

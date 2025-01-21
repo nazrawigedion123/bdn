@@ -1,0 +1,49 @@
+{% extends  "base.html" %}
+
+{% block content %}
+<div class="d-flex flex-wrap" style="padding-top:100px; " >
+    <a class="btn btn-primary" style=" float:right;" href="{% url 'testimonial:testimonials_new' %}">Create Testimonials</a>
+
+</div>
+     <!-- Testimonial Section -->
+
+   <div class="container" style="padding-bottom:100px;">
+    <h2>Testimonials</h2>
+    <div class="testimonials-wrapper">
+        {% for testimonial in testimonials_list %}
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <i class="fas fa-user testimonial-icon"></i>
+          <div class="testimonial-text">
+
+              <footer>{{testimonial.person}}</footer>
+            <blockquote>
+              <p>{{testimonial.testimonial|safe|linebreaks}}</p>
+            </blockquote>
+              {% if user.is_authenticated and user.is_superuser %}
+
+                    <a class="btn btn-primary"  href="{% url 'testimonial:testimonials_edit' pk=testimonial.pk %}">
+                        <i class="bi bi-pen"></i> Edit
+                    </a>
+
+
+                    <a class="btn btn-primary" href="{% url 'testimonial:testimonials_remove' pk=testimonial.pk %}"><i class="bi bi-file-earmark-x"></i>Delete</a>
+
+
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+    </div>
+  </div>
+
+
+
+
+
+
+
+{% endblock %}

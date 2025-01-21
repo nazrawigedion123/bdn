@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_head %}
+<title>
+    Careers - Vacancies
+</title>
+
+
+<link rel="stylesheet" href="{% static 'vacancy/css/styles.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<header style="padding-top:100px;">
+        <h1>Current Vacancies</h1>
+        <p>Join our team and build an amazing career with us!</p>
+        <div class="search-container">
+            <input type="text" placeholder="Search for vacancies...">
+            <button class="search-btn">Search</button>
+        </div>
+    </header>
+
+    <main class="vacancy-list" style="padding-bottom:100px;">
+
+        {% for vacancy in vacancies %}
+    <li>
+      <a href="{% url 'vacancy:vacancy_detail' vacancy.pk %}">
+        {{ vacancy.title }} - {{ vacancy.company }} ({{ vacancy.location }})
+      </a>
+    </li>
+        {% if user.is_superuser %}
+<a href="{% url 'vacancy:vacancy_create' %}">Post a New Vacancy</a>
+{% endif %}
+        {% empty %}
+
+        <!-- No Vacancies Image Area -->
+        <div class="no-vacancy">
+            <img src="{% static 'vacancy/images/vacancy.png' %}" alt="No Vacancies" class="no-vacancy-image">
+            <p>No vacancies posted yet. Check back later!</p>
+        </div>
+         {% endfor %}
+    </main>
+
+
+
+{% endblock %}

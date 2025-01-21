@@ -1,0 +1,45 @@
+{% extends  "base.html" %}
+
+{% block content %}
+<div class="d-flex flex-wrap" style="padding-top: 100px;">
+    <a class="btn btn-primary" href="{% url 'project:project_new' %}" style=" float:right;">Create project</a>
+
+</div>
+<!-- Testimonial Section -->
+
+<div class="container" style="padding-bottom:100px;">
+    <h2>project</h2>
+    <div class="project-wrapper">
+        {% for project in project_list %}
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <i class="fas fa-user testimonial-icon"></i>
+                <div class="testimonial-text">
+
+                    <footer>{{project.title}}</footer>
+                    <blockquote>
+                        <p>{{project.description|safe|linebreaks}}</p>
+                    </blockquote>
+                    {% if user.is_authenticated and user.is_superuser %}
+
+                    <a class="btn btn-primary" href="{% url 'project:project_edit' pk=project.pk %}">
+                        <i class="bi bi-pen"></i> Edit
+                    </a>
+
+
+                    <a class="btn btn-primary" href="{% url 'project:project_remove' pk=project.pk %}"><i
+                            class="bi bi-file-earmark-x"></i>Delete</a>
+
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
