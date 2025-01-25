@@ -1,45 +1,71 @@
-{% extends  "base.html" %}
+
+{% extends "base.html" %}
 {% block content %}
-<!--class="centerstage"-->
-    <div class="container" style="padding-top:100px;padding-bottom:100px;">
-        <div class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-primary" href="{% url 'package:feature_new' %}">Create Feature</a>
-                <h2 class="section-title">Features</h2>
-                <div class="row">
-                    <ul class="list-group">
-                    {% for feature in feature_list %}
 
-                      <li class="list-group-item">{{feature.name}}
-                          <div style="display:inline; float:right;">
-                      {% if user.is_authenticated %}
-                                {% if user.is_superuser %}
-                                    <a class="btn btn-primary"  href="{% url 'package:feature_edit' pk=feature.pk %}">
-                                        <i class="bi bi-pen"></i> Edit
-                                    </a>
+<div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-primary mb-3" href="{% url 'package:feature_new' %}">Create Feature</a>
+            <h2 class="section-title">Features</h2>
 
-
-                                    <a class="btn btn-primary" href="{% url 'package:feature_remove' pk=feature.pk %}"><i class="bi bi-file-earmark-x"></i>Delete</a>
-
-                                {% endif %}
-
-
-                        {% endif %}
-                      </div></li>
-
-
-
-
-
-                    {% endfor %}
-                          </ul>
+            <!-- Loop through categories -->
+            {% for category in categories %}
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">{{ category.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for feature in category.feature_set.all %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ feature.name }}
+                                    <div>
+                                        {% if user.is_authenticated and user.is_superuser %}
+                                            <a class="btn btn-sm btn-outline-primary" href="{% url 'package:feature_edit' pk=feature.pk %}">
+                                                <i class="bi bi-pen"></i> Edit
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger" href="{% url 'package:feature_remove' pk=feature.pk %}">
+                                                <i class="bi bi-file-earmark-x"></i> Delete
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
+
+            <!-- Uncategorized Features -->
+            {% if uncategorized_features %}
+                <div class="card mb-4 border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h4 class="mb-0">Uncategorized Features</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for feature in uncategorized_features %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ feature.name }}
+                                    <div>
+                                        {% if user.is_authenticated and user.is_superuser %}
+                                            <a class="btn btn-sm btn-outline-primary" href="{% url 'package:feature_edit' pk=feature.pk %}">
+                                                <i class="bi bi-pen"></i> Edit
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger" href="{% url 'package:feature_remove' pk=feature.pk %}">
+                                                <i class="bi bi-file-earmark-x"></i> Delete
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+
         </div>
     </div>
-        <!-- See More Button -->
-
-
-
+</div>
 
 {% endblock %}

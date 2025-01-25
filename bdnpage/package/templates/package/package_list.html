@@ -1,44 +1,67 @@
-{% extends  "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="d-flex flex-wrap" style="padding-top:100px;">
-    <a class="btn btn-primary" href="{% url 'package:package_new' %}" style=" float:right;">Create Package</a>
+<div class="container mt-5" style="padding-top:100px;">
+    <!-- Create Package Button -->
+    <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-primary" href="{% url 'package:package_new' %}">
+            <i class="bi bi-plus-circle"></i> Create Package
+        </a>
+    </div>
 
-</div>
-<!-- Testimonial Section -->
+    <h2 class="mb-4 text-center fw-bold">Available Packages</h2>
 
-<div class="container" style="padding-bottom:60px;">
-    <h2>Package</h2>
-    <div class="project-wrapper">
+    <!-- Package Grid -->
+    <div class="row">
         {% for package in package_list %}
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <i class="fas fa-user testimonial-icon"></i>
-                <div class="testimonial-text">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-lg border-0">
+                <!-- Package Image -->
+                {% if package.image %}
+                <img src="{{ package.image.url }}" class="card-img-top" alt="{{ package.name }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="No Image Available">
+                {% endif %}
 
-                    <footer>{{package.name}}</footer>
-                    <blockquote>
-                        <p>{{package.description|safe|linebreaks}}</p>
-                    </blockquote>
-                    {% if user.is_authenticated and user.is_superuser %}
+                <div class="card-body">
+                    <!-- Package Name -->
+                    <h5 class="card-title text-primary fw-bold">{{ package.name }}</h5>
 
-                    <a class="btn btn-primary" href="{% url 'package:package_edit' pk=package.pk %}">
-                        <i class="bi bi-pen"></i> Edit
-                    </a>
+                    <!-- Package Description -->
+                    <p class="card-text text-muted">{{ package.description|safe|linebreaks|truncatewords:20 }}</p>
 
-
-                    <a class="btn btn-primary" href="{% url 'package:package_remove' pk=package.pk %}"><i
-                            class="bi bi-file-earmark-x"></i>Delete</a>
-
-
+                    <!-- Features List -->
+                    {% if package.features.all %}
+                    <h6 class="text-secondary fw-bold">Features:</h6>
+                    <ul class="list-group list-group-flush">
+                        {% for feature in package.features.all %}
+                        <li class="list-group-item">{{ feature.name }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-muted"><i>No features assigned</i></p>
                     {% endif %}
 
+                    <!-- Action Buttons -->
+                    {% if user.is_authenticated and user.is_superuser %}
+                    <div class="d-flex justify-content-between mt-3">
+                        <a class="btn btn-sm btn-warning" href="{% url 'package:package_edit' pk=package.pk %}">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'package:package_remove' pk=package.pk %}">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">No packages available.</p>
         </div>
         {% endfor %}
     </div>
 </div>
-
 
 {% endblock %}

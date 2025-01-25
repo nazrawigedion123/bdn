@@ -11,6 +11,8 @@ class PackageAdmin(admin.ModelAdmin):
     list_display = ('name','features_display','image','description','added_date')
 
 
+
+
 @admin.register(Notification)
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('user','order','message','created_at','is_read')

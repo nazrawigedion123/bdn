@@ -1,5 +1,7 @@
 from django.db import models
+
 from django.urls import reverse
+from package.models import Category
 
 
 # Create your models here.
@@ -9,7 +11,8 @@ class Project(models.Model):
     image = models.ImageField(upload_to='images/', null=True,)
     description = models.TextField(max_length=1000)
     added_date = models.DateTimeField(auto_now_add=True)
-    date=models.DateTimeField(null=True, blank=True)
+    category = models.ForeignKey(Category,blank=True,null=True,on_delete=models.SET_NULL)
+    date=models.DateField(null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse("project:project_list")

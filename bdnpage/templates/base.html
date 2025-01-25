@@ -7,22 +7,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BDN Portfolio</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap Bundle with Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <!--     Custom CSS-->
     <link rel="stylesheet" href="{% static 'bdnpage/css/styles.css' %}">
 
     <!--    others-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script> <!-- Lottie Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .projects-header {
+            background: linear-gradient(135deg, #ff8c00, #ff9933);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-<!--    icons-->
+        .projects-section {
+            padding: 50px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .project-card h3 {
+            color: #ff8c00;
+            margin: 15px 0;
+        }
+
+        .project-card p {
+            color: #666;
+        }
+
+        .btn-visit {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-visit:hover {
+            background-color: #e6831f;
+        }
+    </style>
+    <!--    icons-->
     <link rel="shortcut icon" href="{% static 'bdnpage/images/bdn-03.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'bdnpage/images/bdn-03.ico' %}" type="image/x-icon">
+
 
 
 
@@ -82,6 +137,8 @@
               <ul class="dropdown-menu" aria-labelledby="adminDropdown">
 
                   <li><a class="dropdown-item" href="{% url 'project:project_list' %}">Projects</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'package:category_list' %}">Package Categories</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'package:package_list' %}">Package</a></li>
                   <li><hr class="dropdown-divider"></li>
@@ -186,6 +243,40 @@
           </div>
         </div>
       </footer>
+   <!-- Footer -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+
+      // Counter animation
+      const counters = document.querySelectorAll(".stats-counter");
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute("data-target"));
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60 FPS
+
+        function updateCounter() {
+          const current = parseInt(counter.innerText);
+          if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCounter, 16);
+          } else {
+            counter.innerText = target;
+          }
+        }
+
+        updateCounter();
+      });
+    </script>
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome for icons -->
+       <script src="{% static 'bdnpage/js/scripts.js' %}"></script> <!-- Custom JS -->
+
 
 
 
@@ -193,4 +284,5 @@
 
 </div>
 </body>
+
 </html>

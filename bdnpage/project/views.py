@@ -10,6 +10,7 @@ from .models import Project
 from .forms import ProjectForm
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
+from package.models import Category
 
 
 
@@ -34,6 +35,17 @@ class ProjectListView(ListView):
 
     def get_queryset(self):
         return Project.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Fetch categories with their related project
+        categories = Category.objects.prefetch_related("project_set").all()
+        uncategorized_projects = Project.objects.filter(category__isnull=True)
+
+        context["categories"] = categories
+        context["uncategorized_projects"] = uncategorized_projects
+        return context
 
 
 class CreateProjectView(LoginRequiredMixin, CreateView):

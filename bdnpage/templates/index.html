@@ -1,385 +1,471 @@
 {% extends "base.html" %}
 {% block extra_head %}
 <title>BDN Portfolio</title>
+
+
 {% endblock %}
 
 {% block content %}
 {% load static %}
+<style>
+    .projects-header {
+      background: linear-gradient(135deg, #ff8c00, #ff9933);
+      padding: 80px 0;
+      color: white;
+      text-align: center;
+      margin-bottom: 50px;
+  }
 
+  .projects-section {
+      padding: 50px 0;
+  }
 
+  .project-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+      transform: translateY(-5px);
+  }
+
+  .project-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+  }
+
+  .project-card h3 {
+      color: #ff8c00;
+      margin: 15px 0;
+  }
+
+  .project-card p {
+      color: #666;
+  }
+
+  .btn-visit {
+      background-color: #ff8c00;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  .btn-visit:hover {
+      background-color: #e6831f;
+  }
+</style>
 
 
 <!-- Loading Page -->
-<div id="loading-page" class="loading-page">
+<div class="loading-page" id="loading-page">
     <div class="loading-logo">
-        <img src="{% static 'bdnpage/images/bdn-04.png' %}" alt="BDN Logo">
+        <img alt="BDN Logo" src="{% static 'bdnpage/images/bdn-04.png' %}">
     </div>
     <div class="loading-spinner"></div>
 </div>
 
-
+<div id="floating-share">
+    <i class="fa-solid fa-share-nodes"></i>
+    <div id="social-icons">
+        <a class="social-icon facebook" href="#" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="social-icon twitter" href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+        <a class="social-icon linkedin" href="#" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a class="social-icon instagram" href="#" title="Share on Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
 
 
 <!-- Scroll Progress Bar -->
-    <div class="scroll-progress">
-        <div class="scroll-progress-inner"></div>
-    </div>
+<div class="scroll-progress">
+    <div class="scroll-progress-inner"></div>
+</div>
 
-    <!-- Hero Section -->
-    <header class="hero-section d-flex justify-content-center align-items-center text-center text-light" style="background:url({% static 'bdnpage/images/BG.png' %})no-repeat center center/cover;">
-        <div id="lottie-background" class="lottie-container"></div>
+<!-- Hero Section -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/bodymovin.min.js"></script>
+<header class="hero-section d-flex justify-content-center align-items-center text-center text-light"
+        style="background:url({% static 'bdnpage/images/BG.png' %})no-repeat center center/cover;">
+    <div class="overlay"></div> <!-- Black overlay -->
 
-        <div class="container">
-            <h1 class="display-4 font-weight-bold container">Welcome to BDN</h1>
+    <div class="container">
+        <h1 class="display-4 font-weight-bold container">Welcome to BDN</h1>
         </br></br>
-            <div class='console-container'>
-              <span class="lead" id='text'></span>
-              <div class='console-underscore' id='cursor'>|</div>
-          </div>
+        <div class='console-container'>
+            <span class="lead" id='text'></span>
+            <div class='console-underscore' id='cursor'>|</div>
+        </div>
         </br></br>
-
-            <div class="hero-buttons">
-                <a href="{% url 'home' %}#services" class="btn btn-primary btn-lg m-2">Explor</a>
-                <a href="{% url 'home' %}#contact" class="btn btn-secondary btn-lg m-2">Contact Us</a>
-            </div>
+        <div class="hero-buttons">
+            <a class="btn btn-primary btn-lg m-2" href="{% url 'home' %}#services">Explore</a>
+            <a class="btn btn-secondary btn-lg m-2" href="{% url 'home' %}#contact">Contact Us</a>
         </div>
-    </header>
-
-    <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
     </div>
+</header>
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
 
 
-
-
-        <!-- About Us Section -->
-        <section id="about" class="about-us-section py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <!-- Text Content -->
-                    <div class="col-lg-6">
-                        <h2 data-aos="fade-up" class="display-4 font-weight-bold">About Us</h2>
-                        <p data-aos="fade-down" class="lead">We are a team of dedicated professionals committed to delivering top-notch solutions tailored to your needs.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                        <a data-aos="fade-down" href="#" class="btn btn-primary btn-lg">Learn More</a>
-                    </div>
-                    <!-- Image -->
-                    <div class="col-lg-6 text-center">
-                    </br>
-                        <img data-aos="fade-down" src="{% static 'bdnpage/images/bdn-03.png' %}" alt="About Us Image" class="img-fluid rounded">
-                    </div>
-                </div>
+<!-- About Us Section -->
+<section class="about-us-section py-5" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Text Content -->
+            <div class="col-lg-6">
+                <h2 class="display-4 font-weight-bold" data-aos="fade-up">About Us</h2>
+                <p class="lead" data-aos="fade-down">We are a team of dedicated professionals committed to delivering
+                    top-notch solutions tailored to your needs.</p>
+                <a class="btn btn-primary btn-lg portfolio-btn" data-aos="fade-down" href="{% url 'about' %}"
+                   style="background-color: #FF8C00; border-color: #FF8C00;">
+                    <i class="fas fa-download"></i> Learn more
+                </a> <a class="btn btn-primary btn-lg portfolio-btn" data-aos="fade-down" href="#">
+                <i class="fas fa-download"></i> Portfolio
+            </a>
             </div>
-        </section>
-
-    <!-- Video Section -->
-    <section id="intro-video" class="intro-video-section py-5">
-      <div class="container">
-          <h2 data-aos="fade-up" class="text-center font-weight-bold mb-4">Intro Video</h2>
-          <div class="row justify-content-center">
-              <div class="col-md-8">
-                  <div class="video-wrapper">
-                      <video controls>
-                          <source data-aos="fade-down" src="path/to/your/video.mp4" type="video/mp4">
-                          Your browser does not support the video tag.
-                      </video>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </section>
-
-
-    <div class="wrapper">
-      <div class="divider div-transparent div-dot"></div>
+            <!-- Image -->
+            <div class="col-lg-6 text-center">
+                </br>
+                <img alt="About Us Image" class="img-fluid rounded" data-aos="fade-down"
+                     src="{% static 'bdnpage/images/bdn-03.png' %}">
+            </div>
+        </div>
     </div>
-
-    <!-- First-Part Section -->
-
-    <section id="services" class="section-one py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4">
-                    <img data-aos="fade-left" src="{% static 'bdnpage/images/fullstack.svg' %}" alt="Image Description" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6 mb-4">
-                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Fullstack Development</h2>
-                    <p data-aos="fade-right" class="lead">We provide comprehensive web development services, covering both frontend and backend development to build robust and scalable digital solutions. Our team ensures that every aspect of your web application is crafted to perfection, from user interface design to server-side logic.</p>
-                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider div-transparent div-arrow-down"></div>
-    <!-- Second Section-->
-    <section class="section-two py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 order-md-2">
-                    <img data-aos="fade-left" src="{% static 'bdnpage/images/digital.svg' %}" alt="Image Description" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6 mb-4 order-md-1">
-                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Digital Marketing</h2>
-                    <p data-aos="fade-right" class="lead">Enhance your online presence and drive targeted traffic with our effective digital marketing strategies. We use a mix of SEO, social media marketing, and PPC advertising to help you reach your audience and achieve your business goals.</p>
-                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="divider div-transparent div-arrow-down"></div>
-    <!-- Third Section -->
-    <section class="section-three py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4">
-                    <img data-aos="fade-left" src="{% static 'bdnpage/images/graphics.svg' %}" alt="Image Description" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6 mb-4">
-                    <h2 data-aos="fade-up" class="display-4 font-weight-bold">Graphics Design</h2>
-                    <p data-aos="fade-right" class="lead">Our graphics design services create visually stunning designs that effectively represent your brand and captivate your audience. From logos and brochures to banners and social media graphics, we craft designs that make a lasting impression.</p>
-                    <a data-aos="fade-up" href="#" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
-    </div>
-
-
-    <!-- Packages Section -->
-<!--    <section id="packages" class="packages-section py-5">-->
-<!--        <div class="container">-->
-<!--            <h2 data-aos="fade-up" class="display-6 font-weight-bold">Packages</h2>-->
-<!--        </br>-->
-<!--            <div class="row">-->
-<!--                {% for package in packages %}-->
-<!--                &lt;!&ndash; Package 1 &ndash;&gt;-->
-<!--                <div class="col-md-4">-->
-<!--                    <div data-aos="fade-up" data-aos-duration="3100" class="card">-->
-<!--                        <img src="{% static 'bdnpage/images/bdn-03.png' %}" class="card-img-top" alt="Package 1 Image">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">{{package.name}}</h5>-->
-<!--                            <p class="card-text">{{package.description}}</p>-->
-<!--                            <ul class="list-group list-group-flush">-->
-<!--                                {% for f in package.features.all %}-->
-<!--                                <li class="list-group-item">{{f.name}}</li>-->
-
-<!--                                {% endfor %}-->
-<!--                            </ul>-->
-<!--                            <a data-aos="zoom-out-down" href="#" class="btn btn-primary mt-3">Order</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                {% empty %}-->
-<!--                <p> no package</p>-->
-<!--                {% endfor %}-->
-
-
-
-
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Customize Button &ndash;&gt;-->
-<!--            <div class="text-center mt-5">-->
-<!--                <a href="#" class="btn btn-secondary customize-btn">Customize</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-
-
-    <!-- Packages Section -->
-<section id="packages" class="packages-section py-5">
-  <div class="container">
-      <h2 data-aos="fade-up" class="display-6 font-weight-bold">Packages</h2>
-      <br />
-      <div class="row">
-          {% for package in packages %}
-          <!-- Package 1 -->
-          <div class="col-md-4">
-              <div data-aos="fade-up" data-aos-duration="3100" class="card">
-                  <div class="card-img-wrapper">
-                      <img src="{{package.image.url}}" class="card-img-top" alt="{{package.name}} Image">
-                  </div>
-                  <div class="card-body">
-                      <h5 class="card-title">{{package.name}}</h5>
-                      <p class="card-text">{{package.description}}</p>
-                      <div class="card-back">
-                          <ul class="list-group list-group-flush">
-                              {% for f in package.features.all %}
-                              <li class="list-group-item">{{f.name}}</li>
-
-                              {% endfor %}
-                          </ul>
-
-                      </div>
-
-                  </div>
-                  <a data-aos="zoom-out-down" href="{% url 'package:order_new' pk=package.pk %}" class="btn btn-primary mt-3">Order</a>
-              </div>
-          </div>
-          {% endfor %}
-
-
-
-
-      </div>
-
-      <!-- Customize Button -->
-      <div class="text-center mt-4">
-          <a href="{% url 'package:create_custom' %}" class="btn btn-secondary customize-btn">Customize</a>
-      </div>
-  </div>
 </section>
 
-    <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
-    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 data-aos="fade-up" class="display-6 font-weight-bold">Projects</h2>
-        </br>
-          <div class="row">
-              {% for project in projects %}
-
-
-            <!-- Project Item 1 -->
-            <div data-aos="zoom-in-up" class="col-md-2 col-sm-4 project-item">
-              <div class="project-img" style="background-image: url({{project.image.url}});">
-                <div class="overlay">
-                  <h3 class="project-title">{{project.title}}</h3>
+<!-- Video Section -->
+<section class="intro-video-section py-5" id="intro-video">
+    <div class="container">
+        <h2 class="text-center font-weight-bold mb-4" data-aos="fade-up">Intro Video</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="video-wrapper">
+                    <video controls>
+                        <source data-aos="fade-down" src="path/to/your/video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-              </div>
             </div>
-              {% empty %}
-              <p> no projects</p>
-
-              {% endfor %}
-
-
-
-
-
-          </div>
-            <div class="text-center mt-4">
-          <a href="{% url 'project:projects' %}" class="btn btn-primary">Learn More</a>
-      </div>
         </div>
-      </section>
-
-      <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
     </div>
+</section>
 
-      <!-- Here We Are Section -->
-    <section class="team-section py-5 bg-light">
-        <div class="container">
-          <h2 data-aos="fade-up" class="text-center mb-4">Here We Are</h2>
-          <div class="row">
-            <!-- Team Member 1 -->
-              {% for personnel in personnels %}
-            <div class="col-md-4 text-center mb-4">
-              <img data-aos="fade-up" src="{{personnel.image.url}}" alt="Person 1" class="img-fluid rounded-circle mb-2" style="width: 150px; height: 150px;">
-              <h4  data-aos="fade-down" class="mb-1">{{personnel.name}}</h4>
-              <p   data-aos="fade-down"class="text-muted mb-1">{{personnel.location|safe|linebreaks}}</p>
-              <p   data-aos="fade-down">{{personnel.position}}</p>
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<!-- First-Part Section -->
+
+
+<section class="section-one py-5" id="services">
+    <h2 class="text-center font-weight-bold mb-4" data-aos="fade-up">Services</h2>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img alt="Image Description" class="img-fluid rounded" data-aos="fade-left"
+                     src="{% static 'bdnpage/images/fullstack.svg' %}">
             </div>
-              {% empty %}
-              <p>no personnel</p>
-              {% endfor %}
-
-          </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="display-4 font-weight-bold" data-aos="fade-up">Fullstack Development</h2>
+                <p class="lead" data-aos="fade-right">We provide comprehensive web development services, covering both
+                    frontend and backend development to build robust and scalable digital solutions. Our team ensures
+                    that every aspect of your web application is crafted to perfection, from user interface design to
+                    server-side logic.</p>
+            </div>
         </div>
-      </section>
-
-      <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
     </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5">
-      <div class="container">
-          <h2 data-aos="fade-up" class="text-center mb-5">Testimonials</h2>
-          <div class="row">
-              {% for testimonial in testimonials %}
-              <!-- Testimonial 1 -->
-              <div data-aos="flip-left"  class="col-lg-4 col-md-6 mb-4">
-                  <div class="testimonial text-center p-4">
-                      {% if testimonial.image %}
-                      <img src="{{testimonial.image.url}}" alt="Person 1" class="rounded-circle mb-3" width="100">
-                      {% endif %}
-                      <h5 class="mb-0">{{testimonial.name}}</h5>
-                      <p class="text-muted">{{testimonial.position}}</p>
-                      <p class="testimonial-text">{{testimonial.testimonial}}</p>
-                  </div>
-              </div>
-              {% empty %}
-              <p>no testimonials</p>
-              {% endfor %}
+<div class="divider div-transparent div-arrow-down"></div>
+<!-- Second Section-->
+
+<section class="section-two py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 order-md-2">
+                <img alt="Image Description" class="img-fluid rounded" data-aos="fade-left"
+                     src="{% static 'bdnpage/images/digital.svg' %}">
+            </div>
+            <div class="col-md-6 mb-4 order-md-1">
+                <h2 class="display-4 font-weight-bold" data-aos="fade-up">Digital Marketing</h2>
+                <p class="lead" data-aos="fade-right">Enhance your online presence and drive targeted traffic with our
+                    effective digital marketing strategies. We use a mix of SEO, social media marketing, and PPC
+                    advertising to help you reach your audience and achieve your business goals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="divider div-transparent div-arrow-down"></div>
+<!-- Third Section -->
+
+<section class="section-three py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img alt="Image Description" class="img-fluid rounded" data-aos="fade-left"
+                     src="{% static 'bdnpage/images/graphics.svg' %}">
+            </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="display-4 font-weight-bold" data-aos="fade-up">Graphics Design</h2>
+                <p class="lead" data-aos="fade-right">Our graphics design services create visually stunning designs that
+                    effectively represent your brand and captivate your audience. From logos and brochures to banners
+                    and social media graphics, we craft designs that make a lasting impression.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-          </div>
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+
+<!-- Packages Section -->
+<section class="packages-section py-5" id="packages">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Choose Your Package</h2>
+
+        <!-- Package Categories -->
+        <div class="package-categories mb-5">
+            <div class="row text-center">
+
+                {% for category in categories %}
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                    <div class="category-card">
+                        <div class="mb-3">
+                            <img src={{category.image.url}}>
+                            <h3>{{category.name}}</h3>
+                            <p>{{category.description}}
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+        <!-- Package Tiers -->
+        <div class="package-tiers">
+            <div class="row">
+                {% for package_info in packages %}
+
+
+                <!-- Professional Package -->
+                <div class="col-lg-3 col-md-6 mb-4">
+
+                    <div class="package-card " data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                        {% if package_info.most_pop %}<div class="popular-badge">Most Popular</div> {% endif %}
+                        <div class="package-header">
+                            <h3>{{ package_info.package.name }}</h3>
+                        </div>
+                        <div class="package-features">
+                            <ul>
+                                {% for category, features in package_info.categorized_features.items %}
+                                <li class="feature-category">{{ category }}</li>
+                                {% for feature in features %}
+                                <li><i class="fas fa-check"></i> {{ feature.name }}</li>
+                                {% endfor %}
+                                {% empty %}
+                                <li class="text-muted"><i>No features assigned</i></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                         <a data-aos="zoom-out-down " class="btn btn-primary btn-block"  href="{% url 'package:order_new' pk=package_info.package.pk %}" >Order</a>
+
+                    </div>
+
+
+                </div>
+                 {% endfor %}
+
+
+
+            </div>
+                                <!-- Customize Button -->
+      <div class="text-center mt-4">
+          <a href="{% url 'package:create_custom' %}" class="btn btn-secondary customize-btn">Customize Package</a>
       </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<!-- Projects Section -->
+
+<section class="projects-section" id="projects">
+    <!-- Projects Section -->
+<header class="projects-header">
+    <h1 class="display-4 mb-3">Projects</h1>
+    <p class="lead">Explore our recent projects</p>
+</header>
+    <main class="container">
+    <!-- Web Development Projects Section -->
+
+         {% for category, projects in project_categories.items %}
+        <section class="projects-section">
+        <h2 class="text-center mb-4">{{category.name}}</h2>
+        <div class="row">
+            <!-- Project Item 1 -->
+            {% for project in projects %}
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="{{project.image.url}}" alt="{{project.title}}" />
+                    <h3>{{project.title}}</h3>
+                    <p>{{project.description}}</p>
+                    {% if project.link %}
+                    <a href="{{project.link}}" target="_blank" class="btn btn-visit">
+                        <i class="fas fa-external-link-alt"></i> Visit
+                    </a>
+                    {% else %}
+                    <a href="#" class="btn btn-visit">View Details</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+             <!-- See More Button for Web Development Projects -->
+        <div class="text-center mt-4">
+            <a href="{% url 'project:projects' %}" class="btn btn-secondary">See More {{category.name}} Projects</a>
+        </div>
     </section>
+        {% endfor %}
 
 
-    <div class="wrapper">
-      <div class="divider div-transparent div-dot"></div>
+
+    <!-- Customize Button -->
+    <div class="text-center mt-4">
+        <a href="{% url 'project:projects' %}" class="btn btn-secondary customize-btn">More Projects</a>
     </div>
+</main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div data-aos="zoom-in" class="container">
-          <div class="row">
+
+</section>
+
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<!-- Here We Are Section -->
+<section class="team-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-up">Here We Are</h2>
+        <div class="row">
+            <!-- Team Member 1 -->
+            {% for personnel in personnels %}
+            <div class="col-md-4 text-center mb-4">
+                <img alt="Person 1" class="img-fluid rounded-circle mb-2" data-aos="fade-up"
+                     src="{{personnel.image.url}}" style="width: 150px; height: 150px;">
+                <h4 class="mb-1" data-aos="fade-down">{{personnel.name}}</h4>
+                <p class="text-muted mb-1" data-aos="fade-down">{{personnel.location|safe|linebreaks}}</p>
+                <p data-aos="fade-down">{{personnel.position}}</p>
+            </div>
+            {% empty %}
+            <p>no personnel</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="py-5" id="testimonials">
+    <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Testimonials</h2>
+        <div class="row">
+            {% for testimonial in testimonials %}
+            <!-- Testimonial 1 -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="flip-left">
+                <div class="testimonial text-center p-4">
+                    {% if testimonial.image %}
+                    <img alt="Person 1" class="rounded-circle mb-3" src="{{testimonial.image.url}}" width="100">
+                    {% endif %}
+                    <h5 class="mb-0">{{testimonial.name}}</h5>
+                    <p class="text-muted">{{testimonial.position}}</p>
+                    <p class="testimonial-text">{{testimonial.testimonial}}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>no testimonials</p>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+
+
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <div class="container" data-aos="zoom-in">
+        <div class="row">
             <!-- Google Map Location -->
             <div class="col-md-6 map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d623.3983410054137!2d38.87441557397529!3d9.06328852799114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2set!4v1722715273502!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe allowfullscreen=""
+                        height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d623.3983410054137!2d38.87441557397529!3d9.06328852799114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2set!4v1722715273502!5m2!1sen!2set"
+                        style="border:0;"
+                        width="600"></iframe>
             </div>
             <!-- Contact Us Form -->
             <div class="col-md-6 contact-form">
-              <h2>Contact Us</h2>
-              <form  method="POST"  novalidate="true">
+                <h2>Contact Us</h2>
+                <form method="POST" novalidate="true">
 
 
-                <div class="form-group">
-                    {% csrf_token %}
+                    <div class="form-group">
+                        {% csrf_token %}
 
                         {{form.as_p}}
 
 
-
-                </div>
-                   {% if form %}
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                  {% endif %}
-              </form>
+                    </div>
+                    {% if form %}
+                    <button class="btn btn-primary" type="submit">Send Message</button>
+                    {% endif %}
+                </form>
             </div>
-          </div>
         </div>
-      </section>
-
-      <div class="wrapper">
-        <div class="divider div-transparent div-dot"></div>
     </div>
+</section>
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome for icons -->
-    <script src="{% static 'bdnpage/js/scripts.js' %}"></script> <!-- Custom JS -->
+<div class="wrapper">
+    <div class="divider div-transparent div-dot"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome for icons -->
+<script src="{% static 'bdnpage/js/scripts.js' %}"></script> <!-- Custom JS -->
 <script>
-  AOS.init();
+    AOS.init();
 </script>
-
-
-
 
 
 {% endblock %}

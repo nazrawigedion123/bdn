@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (TemplateView, ListView, DetailView, )
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -6,12 +7,66 @@ from django.utils import timezone
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Package, Feature, Order, Notification, Custom
-from .forms import PackageForm, FeatureForm, OrderForm,CustomForm
+from .models import Package, Feature, Order, Notification, Custom,Category
+from .forms import PackageForm, FeatureForm, OrderForm,CustomForm,CategoryForm
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 
 from django.contrib.auth.models import User, Group
+
+
+
+
+
+# Category views
+
+class CategoryListView(ListView):
+    model = Category
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        return Category.objects.all()
+
+
+class CreateCategoryView(LoginRequiredMixin, CreateView):
+    login_url = '/accounts/login/'
+    redirect_field_name = 'package/category_list.html'
+    form_class = CategoryForm
+    model = Category # Add this line
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/accounts/login/'
+    redirect_field_name = 'package/category_list.html'
+    form_class = CategoryForm
+    model = Category
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+    model = Category
+    success_url = reverse_lazy('package:category_list')
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+
+
 
 
 # Create your views here.
@@ -24,7 +79,7 @@ class PackageListView(ListView):
         return super().dispatch(*args, **kwargs)
 
     def get_queryset(self):
-        return Package.objects.all()
+        return Package.objects.order_by('added_date')
 
 
 class CreatePackageView(LoginRequiredMixin, CreateView):
@@ -52,6 +107,8 @@ class PackageUpdateView(LoginRequiredMixin, UpdateView):
         return super().dispatch(*args, **kwargs)
 
 
+
+
 class PackageDeleteView(LoginRequiredMixin, DeleteView):
     model = Package
     success_url = reverse_lazy('package:package_list')
@@ -71,6 +128,17 @@ class FeatureListView(LoginRequiredMixin,ListView):
 
     def get_queryset(self):
         return Feature.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Fetch categories with their related features
+        categories = Category.objects.prefetch_related("feature_set").all()
+        uncategorized_features = Feature.objects.filter(category__isnull=True)
+
+        context["categories"] = categories
+        context["uncategorized_features"] = uncategorized_features
+        return context
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):

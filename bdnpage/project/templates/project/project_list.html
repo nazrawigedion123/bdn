@@ -10,33 +10,89 @@
 <div class="container" style="padding-bottom:100px;">
     <h2>project</h2>
     <div class="project-wrapper">
-        {% for project in project_list %}
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <i class="fas fa-user testimonial-icon"></i>
-                <div class="testimonial-text">
-
-                    <footer>{{project.title}}</footer>
-                    <blockquote>
-                        <p>{{project.description|safe|linebreaks}}</p>
-                    </blockquote>
-                    {% if user.is_authenticated and user.is_superuser %}
-
-                    <a class="btn btn-primary" href="{% url 'project:project_edit' pk=project.pk %}">
-                        <i class="bi bi-pen"></i> Edit
-                    </a>
+        <!-- Loop through categories -->
+        {% for category in categories %}
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">{{ category.name }}</h4>
+            </div>
+           <div class="row" >
 
 
-                    <a class="btn btn-primary" href="{% url 'project:project_remove' pk=project.pk %}"><i
-                            class="bi bi-file-earmark-x"></i>Delete</a>
+
+                        {% for project in category.project_set.all %}
+                        <div class="col-md-4">
+                            <div class="project-card">
+                                <img alt="{{ project.title }}" src="{{project.image.url}}"/>
+                                <h3>{{ project.title }}</h3>
+                                <p>{{project.description}}</p>
+                                {% if project.link %}
+                                <a class="btn btn-visit" href="{{project.link}}" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Visit
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                {% if user.is_authenticated and user.is_superuser %}
+                                <a class="btn btn-sm btn-outline-primary"
+                                   href="{% url 'project:project_edit' pk=project.pk %}">
+                                    <i class="bi bi-pen"></i> Edit
+                                </a>
+                                <a class="btn btn-sm btn-outline-danger"
+                                   href="{% url 'project:project_remove' pk=project.pk %}">
+                                    <i class="bi bi-file-earmark-x"></i> Delete
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
 
 
-                    {% endif %}
 
-                </div>
             </div>
         </div>
         {% endfor %}
+
+        <!-- Uncategorized projects -->
+        {% if uncategorized_projects %}
+        <div class="card mb-4 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">Uncategorized project</h4>
+            </div>
+            <div class="row">
+
+                    {% for project in uncategorized_projects %}
+
+                        <div class="col-md-4">
+                            <div class="project-card">
+                                <img alt="{{ project.title }}" src="{{project.image.url}}"/>
+                                <h3>{{ project.title }}</h3>
+                                <p>{{project.description}}</p>
+                                <a class="btn btn-visit" href="{{project.link}}" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Visit
+                                </a>
+                            </div>
+                            <div>
+                                {% if user.is_authenticated and user.is_superuser %}
+                                <a class="btn btn-sm btn-outline-primary"
+                                   href="{% url 'project:project_edit' pk=project.pk %}">
+                                    <i class="bi bi-pen"></i> Edit
+                                </a>
+                                <a class="btn btn-sm btn-outline-danger"
+                                   href="{% url 'project:project_remove' pk=project.pk %}">
+                                    <i class="bi bi-file-earmark-x"></i> Delete
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+
+            </div>
+        </div>
+        {% endif %}
+
     </div>
 </div>
 

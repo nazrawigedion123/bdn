@@ -1,13 +1,23 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.db.models import SET_NULL
 from django.urls import reverse
 from django.contrib.auth.models import User, Group
+class Category(models.Model):
+    name=models.CharField(max_length=200)
+    image=models.FileField(upload_to='images/icons' , validators=[FileExtensionValidator(['svg'])])
+    description = models.TextField(max_length=1000, null=True,blank=True)
+    def get_absolute_url(self):
+        return reverse("package:category_list")
 
-
+    def __str__(self):
+        return str(self.name)
 # Create your models here.
 class Feature(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(max_length=1000)
     price = models.FloatField(default=0)
+    category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
@@ -19,8 +29,9 @@ class Feature(models.Model):
 class Package(models.Model):
     name = models.CharField(max_length=200)
     features = models.ManyToManyField(Feature, blank=True)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/' ,blank=True, null=True)
     description = models.TextField(max_length=1000)
+    most_pop=models.BooleanField(default=False)
     added_date = models.DateTimeField(auto_now_add=True)
 
     @property
@@ -33,8 +44,7 @@ class Package(models.Model):
     def __str__(self):
         return str(self.name)
 
-    class Meta:
-        ordering = ['-added_date']
+
 
 class Custom(models.Model):
     feature = models.ManyToManyField(Feature, )

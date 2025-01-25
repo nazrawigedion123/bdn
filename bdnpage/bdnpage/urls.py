@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -29,4 +31,5 @@ urlpatterns = [
     path('project/', include(('project.urls', 'project'))),
     path('personnel/', include(('personnel.urls', 'personnel'))),
     path('vacancies/', include(('vacancy.urls', 'vacancy'))),
+    path("about/", views.about,name="about"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

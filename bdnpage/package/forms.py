@@ -1,11 +1,60 @@
 from django import forms
-from .models import Package, Feature, Order, Custom
+from django.core.validators import FileExtensionValidator
+
+from .models import Package, Feature, Order, Custom, Category
+
+
+class SVGAndImageFormField:
+    pass
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta():
+        model = Category
+        fields = ['name',  'image','description']
+        image = forms.FileField(
+
+            validators=[FileExtensionValidator(['svg'])]
+        )
+        
+        widgets = {
+
+            'name': forms.TextInput(attrs={'class': 'form-control  textinputclass', 'placeholder': 'name'}),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control editable medium-editor-textarea textinputclass',
+                       'placeholder': 'description'}),
+
+        }
 
 
 class PackageForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(PackageForm, self).__init__(*args, **kwargs)
+
+        # Fetch all categories
+        categories = Category.objects.prefetch_related("feature_set").all()
+
+        # Create choices grouped by category
+        choices = []
+        for category in categories:
+            features = category.feature_set.all()
+            if features:
+                choices.append((category.name, [(feature.id, feature.name) for feature in features]))
+
+        # Features that have no category
+        uncategorized_features = Feature.objects.filter(category__isnull=True)
+        if uncategorized_features.exists():
+            choices.append(("Uncategorized", [(feature.id, feature.name) for feature in uncategorized_features]))
+
+        # Create the checkbox select multiple field
+        self.fields["features"] = forms.MultipleChoiceField(
+            choices=choices,
+            widget=forms.CheckboxSelectMultiple(),
+            required=False,
+        )
     class Meta():
         model = Package
-        fields = ['name', 'description', 'image', 'features']
+        fields = ['name', 'description', 'image', 'features','most_pop']
         widgets = {
 
             'name': forms.TextInput(attrs={'class': 'form-control  textinputclass', 'placeholder': 'name'}),
@@ -13,17 +62,19 @@ class PackageForm(forms.ModelForm):
             'description': forms.Textarea(
                 attrs={'class': 'form-control editable medium-editor-textarea textinputclass',
                        'placeholder': 'description'}),
-            'image': forms.FileInput(attrs={'class': 'form-control'})
+            'image': forms.FileInput(attrs={'class': 'form-control'}),
+            'most_pop':forms.CheckboxInput()
         }
 
 
 class FeatureForm(forms.ModelForm):
     class Meta():
         model = Feature
-        fields = ['name', 'description']
+        fields = ['name', 'description','category']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'name'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'description'})
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'description'}),
+            'category':forms.Select(attrs={'class': 'form-control',})
         }
 
 class OrderForm(forms.ModelForm):

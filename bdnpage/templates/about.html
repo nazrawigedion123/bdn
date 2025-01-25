@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block extra_head %}
+
+<title>About Us</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script> <!-- Lottie Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+    <style>
+        .container{
+
+        padding-top:40px;}
+
+      .stats-counter {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ff8c00;
+      }
+      .card {
+        transition: transform 0.3s;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .section-title {
+        position: relative;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+      }
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background-color: #ff8c00;
+      }
+    </style>
+
+
+
+    <!-- Hero Section -->
+    <div class="container-fluid py-5 bg-light" >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h1 class="display-4 fw-bold mb-4">About Us</h1>
+            <p class="lead">
+                BDN is a company that specializes in Digital Solutions including Website development, software development and Advertisement.
+                This company was founded by three computer professionals who are passionate about their work.our existance is to blend
+                creative designs with innovative technology to deliver the best result. With our Expertise in these areas helps us to offer the
+                best solution that suits you with the best and the latest available solution and tools tha boost your businesses. we always try
+                to We always try to enhance efficiency, productivity and capability of businesses by delivering the services above &beyond industry 
+                values and customer expectations. 
+            </p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <img
+              src="{% static 'bdnpage/images/bdn-02.png' %}"
+              class="img-fluid rounded shadow"
+              alt="About Us"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission, Vision, Values Section -->
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card h-100 p-4">
+            <h3 class="text-center mb-4">Our Mission</h3>
+            <p>
+                to equip clients with latest and cutting-edge Digital solutions that help to elevate
+                their brand and services globally and lead to success.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 p-4">
+            <h3 class="text-center mb-4">Our Vision</h3>
+            <p>
+                to be first in the world in providing comprehensive Digital solutions that integrate
+creative ideas with latest technologies.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 p-4">
+            <h3 class="text-center mb-4">Our Values</h3>
+            <p>
+            
+INNOVATIVE</br>
+QUALITY</br>
+INTEGRITY</br>
+COLLABORATION
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="container-fluid bg-light py-5">
+      <div class="container">
+        <h2 class="text-center section-title">Our Achievements</h2>
+        <div class="row text-center">
+          <div class="col-md-3" data-aos="zoom-in">
+            <div class="stats-counter" data-target="150">0</div>
+            <p>Projects Completed</p>
+          </div>
+          <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stats-counter" data-target="50">0</div>
+            <p>Team Members</p>
+          </div>
+          <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stats-counter" data-target="100">0</div>
+            <p>Happy Clients</p>
+          </div>
+          <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stats-counter" data-target="10">0</div>
+            <p>Years of Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
+

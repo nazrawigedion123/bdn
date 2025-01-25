@@ -8,6 +8,11 @@ urlpatterns=[
     path('<int:pk>/edit/', views.PackageUpdateView.as_view(), name='package_edit'),
     path('<int:pk>/remove/',views.PackageDeleteView.as_view(), name='package_remove'),
 
+    path('category/', views.CategoryListView.as_view(), name='category_list'),
+    path('category/new/', views.CreateCategoryView.as_view(), name='category_new'),
+    path('category/<int:pk>/edit', views.CategoryUpdateView.as_view(), name='category_edit'),
+    path('category/<int:pk>/delete', views.CategoryDeleteView.as_view(), name='category_remove'),
+
     path('feature/', views.FeatureListView.as_view(),name='feature_list'),
     path('feature/new/', views.CreateFeatureView.as_view(),name='feature_new'),
     path('feature/<int:pk>/edit', views.FeatureUpdateView.as_view(),name='feature_edit'),
