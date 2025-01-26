@@ -7,32 +7,26 @@
 </div>
 <!-- Testimonial Section -->
 
-<div class="container" style="padding-bottom:100px;">
-    <h2>Personnel</h2>
-    <div class="project-wrapper">
+<div class="container py-5">
+    <h2 class="text-center mb-4">Personnel</h2>
+    <div class="row justify-content-center">
         {% for personnel in personnel_list %}
-        <div class="testimonial">
-            <div class="testimonial-content">
-                <i class="fas fa-user testimonial-icon"></i>
-                <div class="testimonial-text">
-
-                    <footer>{{personnel.name}}</footer>
-                    <blockquote>
-                        <p>{{personnel.position|safe|linebreaks}}</p>
-                    </blockquote>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow border-0 h-100">
+                <div class="card-body text-center">
+                    <img src="{{ personnel.image.url }}" alt="{{ personnel.name }}" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                    <h5 class="card-title">{{ personnel.name }}</h5>
+                    <p class="card-text text-muted">{{ personnel.position|safe|linebreaks }}</p>
                     {% if user.is_authenticated and user.is_superuser %}
-
-                    <a class="btn btn-primary" href="{% url 'personnel:personnel_edit' pk=personnel.pk %}">
-                        <i class="bi bi-pen"></i> Edit
-                    </a>
-
-
-                    <a class="btn btn-primary" href="{% url 'personnel:personnel_remove' pk=personnel.pk %}"><i
-                            class="bi bi-file-earmark-x"></i>Delete</a>
-
-
+                    <div class="d-flex justify-content-center gap-2">
+                        <a class="btn btn-outline-primary btn-sm" href="{% url 'personnel:personnel_edit' pk=personnel.pk %}">
+                            <i class="bi bi-pen"></i> Edit
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm" href="{% url 'personnel:personnel_remove' pk=personnel.pk %}">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
                     {% endif %}
-
                 </div>
             </div>
         </div>

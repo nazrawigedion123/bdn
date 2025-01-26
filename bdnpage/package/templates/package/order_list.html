@@ -3,50 +3,78 @@
 {% block content %}
 
 
-<div class="container overflow-hidden text-center" style="padding-top:100px; padding-bottom:100px;">
-    <div class="row g-2">
-    <h2>Order</h2>
-    <div class="col-6">
-        {% for order in order_list %}
-        <div class="testimonial p-3">
-            <div class="testimonial-content">
-                <i class="fas fa-user testimonial-icon"></i>
-                <div class="testimonial-text">
-
-                    <footer>{{order.name}}</footer>
-                    <blockquote>
-                        <p>{{order.company}}</p>
-                        <p>{{order.phone}}</p>
+<div class="container overflow-hidden text-center py-5"  style="padding-top:100px;">
+    <h2 class="mb-4">Order List</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            {% for order in order_list %}
+            <div class="testimonial p-4 mb-4 shadow-sm rounded bg-light">
+                <div class="testimonial-content text-start">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-user-circle testimonial-icon fa-3x text-primary me-3"></i>
+                        <h5 class="mb-0">{{ order.name }}</h5>
+                    </div>
+                    <blockquote class="blockquote">
+                        <p class="mb-1"><strong>Company:</strong> {{ order.company }}</p>
+                        <p class="mb-1"><strong>Phone:</strong> {{ order.phone }}</p>
                         {% if order.package %}
-                        <p>{{order.package.name}}</p>
+                        <p class="mb-1"><strong>Package:</strong> {{ order.package.name }}</p>
+                        {% endif %}
+                        {% if order.email %}
+                        <p class="mb-1"><strong>Email:</strong> {{ order.email }}</p>
                         {% endif %}
                         {% if order.custom %}
-                        <h4> custom Features</h4>
-                        {% for feature in order.custom.feature.all %}
-                            <p>{{feature.name}}</p>
-                        {% endfor %}
+                        <h6 class="mt-3">Custom Features</h6>
+                        <ul class="list-unstyled mb-0">
+                            {% for feature in order.custom.feature.all %}
+                            <li class="text-muted">- {{ feature.name }}</li>
+                            {% endfor %}
+                        </ul>
                         {% endif %}
                     </blockquote>
                     {% if user.is_authenticated and user.is_superuser %}
-
-                    <a class="btn btn-primary" href="{% url 'package:order_edit' pk=order.pk %}">
-                        <i class="bi bi-pen"></i> Edit
-                    </a>
-
-
-                    <a class="btn btn-primary" href="{% url 'package:order_remove' pk=order.pk %}"><i
-                            class="bi bi-file-earmark-x"></i>Delete</a>
-
-
+                    <div class="mt-3">
+                        <a class="btn btn-warning me-2" href="{% url 'package:order_edit' pk=order.pk %}">
+                            <i class="bi bi-pen"></i> Edit
+                        </a>
+                        <a class="btn btn-danger" href="{% url 'package:order_remove' pk=order.pk %}">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </div>
                     {% endif %}
-
                 </div>
             </div>
+            {% empty %}
+            <p class="text-muted">No orders available.</p>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-        </div>
 </div>
 
-
+<style>
+.testimonial {
+    border-left: 5px solid #ff8000;
+    transition: transform 0.3s ease-in-out;
+}
+.testimonial:hover {
+    transform: scale(1.02);
+}
+.blockquote {
+    font-size: 1rem;
+    color: #333;
+}
+.text-primary {
+    color: #ff8000 !important;
+}
+.btn-warning, .btn-danger {
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+.btn-warning:hover {
+    background: #e67e22;
+}
+.btn-danger:hover {
+    background: #c0392b;
+}
+</style>
 {% endblock %}

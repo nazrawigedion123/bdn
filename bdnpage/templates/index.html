@@ -125,7 +125,7 @@
                 <a class="btn btn-primary btn-lg portfolio-btn" data-aos="fade-down" href="{% url 'about' %}"
                    style="background-color: #FF8C00; border-color: #FF8C00;">
                     <i class="fas fa-download"></i> Learn more
-                </a> <a class="btn btn-primary btn-lg portfolio-btn" data-aos="fade-down" href="#">
+                </a> <a class="btn btn-primary btn-lg portfolio-btn" data-aos="fade-down" href="{% static 'bdnpage/pdf/bdn_profolio.pdf' %}">
                 <i class="fas fa-download"></i> Portfolio
             </a>
             </div>
@@ -257,48 +257,128 @@
 
 
         <!-- Package Tiers -->
-        <div class="package-tiers">
-            <div class="row">
-                {% for package_info in packages %}
+<!--        <div class="package-tiers">-->
+<!--            <div class="row">-->
+<!--                {% for package_info in packages %}-->
 
 
-                <!-- Professional Package -->
-                <div class="col-lg-3 col-md-6 mb-4">
+<!--                &lt;!&ndash; Professional Package &ndash;&gt;-->
+<!--                <div class="col-lg-3 col-md-6 mb-4">-->
 
-                    <div class="package-card " data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
-                        {% if package_info.most_pop %}<div class="popular-badge">Most Popular</div> {% endif %}
-                        <div class="package-header">
-                            <h3>{{ package_info.package.name }}</h3>
-                        </div>
-                        <div class="package-features">
-                            <ul>
-                                {% for category, features in package_info.categorized_features.items %}
-                                <li class="feature-category">{{ category }}</li>
-                                {% for feature in features %}
-                                <li><i class="fas fa-check"></i> {{ feature.name }}</li>
-                                {% endfor %}
-                                {% empty %}
-                                <li class="text-muted"><i>No features assigned</i></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                         <a data-aos="zoom-out-down " class="btn btn-primary btn-block"  href="{% url 'package:order_new' pk=package_info.package.pk %}" >Order</a>
+<!--                    <div class="package-card " data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">-->
+<!--                        {% if package_info.most_pop %}<div class="popular-badge">Most Popular</div> {% endif %}-->
+<!--                        <div class="package-header">-->
+<!--                            <h3>{{ package_info.package.name }}</h3>-->
+<!--                        </div>-->
+<!--                        <div class="package-features">-->
+<!--                            <ul>-->
+<!--                                {% for category, features in package_info.categorized_features.items %}-->
+<!--                                <li class="feature-category">{{ category }}</li>-->
+<!--                                {% for feature in features %}-->
+<!--                                <li><i class="fas fa-check"></i> {{ feature.name }}</li>-->
+<!--                                {% endfor %}-->
+<!--                                {% empty %}-->
+<!--                                <li class="text-muted"><i>No features assigned</i></li>-->
+<!--                                {% endfor %}-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                         <a data-aos="zoom-out-down " class="btn btn-primary btn-block"  href="{% url 'package:order_new' pk=package_info.package.pk %}" >Order</a>-->
 
-                    </div>
+<!--                    </div>-->
 
 
+<!--                </div>-->
+<!--                 {% endfor %}-->
+
+
+
+<!--            </div>-->
+<!--                                &lt;!&ndash; Customize Button &ndash;&gt;-->
+<!--      <div class="text-center mt-4">-->
+<!--          <a href="{% url 'package:create_custom' %}" class="btn btn-secondary customize-btn">Customize Package</a>-->
+<!--      </div>-->
+
+<!--        </div>-->
+ <div class="container py-5">
+    <div class="row justify-content-center">
+        {% for package_info in packages %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card package-card text-center shadow border-0 h-100" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                {% if package_info.most_pop %}
+                <div class="popular-badge">Most Popular</div>
+                {% endif %}
+                <div class="package-header bg-orange text-white py-3">
+                    <h4 class="mb-0">{{ package_info.package.name }}</h4>
                 </div>
-                 {% endfor %}
-
-
-
+                <div class="package-features px-3 py-4">
+                    <ul class="list-unstyled text-start">
+                        {% for category, features in package_info.categorized_features.items %}
+                        <li class="feature-category fw-bold border-bottom pb-2 mb-2">{{ category }}</li>
+                        {% for feature in features %}
+                        <li class="d-flex align-items-center"><i class="fas fa-check text-success me-2"></i> {{ feature.name }}</li>
+                        {% endfor %}
+                        {% empty %}
+                        <li class="text-muted"><i>No features assigned</i></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="pb-3 px-3">
+                    <a class="btn btn-orange w-100" href="{% url 'package:order_new' pk=package_info.package.pk %}">Order</a>
+                </div>
             </div>
-                                <!-- Customize Button -->
-      <div class="text-center mt-4">
-          <a href="{% url 'package:create_custom' %}" class="btn btn-secondary customize-btn">Customize Package</a>
-      </div>
-
         </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'package:create_custom' %}" class="btn btn-orange customize-btn">Customize Package</a>
+    </div>
+</div>
+
+<style>
+.package-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.package-card:hover {
+    transform: translateY(-5px);
+}
+.package-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+}
+.bg-orange {
+    background: linear-gradient(135deg, #ff8000, #ff9900);
+}
+.btn-orange {
+    background: linear-gradient(135deg, #ff8000, #ff9900);
+    color: #fff;
+    border: none;
+}
+.btn-orange:hover {
+    background: linear-gradient(135deg, #e67300, #ff8000);
+}
+.popular-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6600;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.feature-category {
+    color: #ff8000;
+}
+.customize-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+</style>
+
     </div>
 </section>
 

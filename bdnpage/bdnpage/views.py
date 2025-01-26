@@ -14,7 +14,7 @@ from package.models import Package, Notification, Category,Feature
 def homepage(request):
     testimonials = Testimonials.objects.all()[:3]
 
-    personnel= Personnel.objects.all()[:3]
+    personnel= Personnel.objects.all().reverse()
     packages = Package.objects.prefetch_related('features__category')
     categories = Category.objects.prefetch_related("feature_set").all()
     # Prepare package data with categorized features

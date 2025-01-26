@@ -3,29 +3,58 @@
 {% block content %}
 
 <div class="container mt-5 pt-5" style="padding-top:100px; padding-bottom:100px;">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 id="form-title">New Object</h2>
-                <form method="POST" enctype="multipart/form-data"  class="row g-3 align-items-center post-form" >
-                    <div class="mb-3">
-                        {% csrf_token %}
-                        {{form.as_p}}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 id="form-title" class="text-center mb-4">New Order</h2>
+            <form method="POST" enctype="multipart/form-data" class="row g-3 post-form p-4 shadow rounded bg-white">
+                {% csrf_token %}
 
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+                <div class="mb-3">
+                    {{ form.company.label_tag }}
+                    {{ form.company }}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
 
-                        <button type="submit" class="btn btn-primary save btn btn-default loader">Save</button>
-                    </div>
-                </form>
-                 <script>var editor = new MediumEditor('.editable');</script>
-
-
-
-
-
-
-            </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-orange w-100">Submit Order</button>
+                </div>
+            </form>
         </div>
+    </div>
 </div>
 
+<style>
+.post-form {
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+.post-form:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.btn-orange {
+    background: linear-gradient(135deg, #ff8000, #ff9900);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.btn-orange:hover {
+    background: linear-gradient(135deg, #e67300, #ff8000);
+}
+</style>
 
 
 {% endblock %}

@@ -1,178 +1,272 @@
 /* Basic styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 header {
-    background: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
 }
 
-.card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    overflow: hidden;
-    width: 300px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+.web-dev-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  overflow: hidden;
+  width: calc(33.33% - 20px); /* Adjusted for three cards per row */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
+.web-dev-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
 }
 
-.card h3, .card p {
-    margin: 10px 0;
+.web-dev-card h3,
+.web-dev-card p {
+  margin: 10px 0;
 }
 
-.card:hover {
-    transform: scale(1.05);
+.web-dev-card:hover {
+  transform: scale(1.05);
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .modal.active {
-    display: flex;
+  display: flex;
 }
 
 .modal-content {
-    width: 60%;
-    height: 80%;
-    max-width: 800px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 20px;
-    position: relative;
-    text-align: center;
+  width: 60%;
+  height: 85%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
 }
 
 .modal-content img {
-    width: 80%;
-    height: auto;
-    border-radius: 15px;
+  width: 80%;
+  height: auto;
+  border-radius: 15px;
 }
 
 .modal .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.modal-content h2, .modal-content p {
-    margin: 10px 0;
+.modal-content h2,
+.modal-content p {
+  margin: 10px 0;
 }
 
 .modal-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .modal-buttons button {
-    background-color: #f7941d;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 0 10px;
-    cursor: pointer;
-    position: relative;
+  background-color: #f7941d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
 }
 
 .modal-buttons .like-counter {
-    font-size: 16px;
-    margin-left: 5px;
+  font-size: 16px;
+  margin-left: 5px;
 }
 
 .modal-buttons button:hover {
-    background-color: #e6831f;
+  background-color: #e6831f;
 }
 
 .share-button {
-    background-color: #f7941d;
-    border: none;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative; /* Ensures the share options are positioned relative to the button */
+  background-color: #f7941d;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative; /* Ensures the share options are positioned relative to the button */
 }
+
 /* Share options */
 .share-options {
-    display: none; /* Initially hidden */
-    position: absolute;
-    bottom: -50px; /* Adjust as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    z-index: 1001;
-    text-align: center;
+  display: none; /* Initially hidden */
+  position: relative;
+  bottom: 50px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1001;
+  text-align: center;
 }
 
 .share-options.active {
-    display: block; /* Display when active */
+  display: block; /* Display when active */
 }
+
 .share-options .share-icon {
-    margin: 0 5px;
-    color: #333;
-    text-decoration: none;
-    font-size: 20px;
-    display: inline-block;
+  margin: 0 5px;
+  color: #333;
+  text-decoration: none;
+  font-size: 20px;
+  display: inline-block;
 }
 
 .share-options .share-icon:hover {
-    color: #f7941d;
+  color: #f7941d;
 }
 
 /* Navigation Buttons for Carousel */
-.prev, .next {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.prev,
+.next {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .prev {
-    left: 10px;
+  left: 10px;
 }
 
 .next {
-    right: 10px;
+  right: 10px;
+}
+
+/* Recent Web Dev Section */
+.recent-web-dev-section {
+  padding: 60px 0;
+  background-color: #f5f5f5;
+}
+
+.recent-web-dev-section .section-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.web-dev-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.web-dev-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.6rem;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.btn-visit {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f7941d;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-visit:hover {
+  background-color: #e5891c;
+  transform: translateY(-2px);
+}
+
+.btn-visit i {
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+/* Custom styles for the project cards */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
 }
