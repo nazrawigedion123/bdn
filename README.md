@@ -24,28 +24,29 @@ Bash
 
 git clone https://nazrawigedion123/bdn.git
 
-Replace <your_github_username> with your actual GitHub username or the URL of your repository if it's hosted elsewhere.
 
 3. Create a Virtual Environment (Recommended)
 
 It's highly recommended to create a virtual environment to isolate the project's dependencies from your system-wide Python installations. Here's how to create one using venv:
 Bash
+    
 
 python -m venv venv
 
 This creates a virtual environment directory named venv. Activate it using the following command (depending on your operating system):
+bash
 
-    Windows:
+    Windows: venv\Scripts\activate.bat
 
-Bash
+bash
 
-venv\Scripts\activate.bat
 
-    macOS/Linux:
 
-Bash
+    macOS/Linux: source venv/bin/activate
 
-source venv/bin/activate
+
+
+
 
 4. Install Dependencies
 
